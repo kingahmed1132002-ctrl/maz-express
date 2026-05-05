@@ -1,0 +1,213 @@
+/* App Layout */
+.app {
+  @apply pt-0;
+}
+
+/* Navigation */
+nav {
+  @apply fixed top-0 left-0 right-0 z-50 flex justify-center px-5 py-5 transition-all duration-300 ease-out;
+}
+
+nav.scrolled {
+  @apply max-w-[900px] h-16 rounded-[50px] bg-white/85 backdrop-blur-[16px] saturate-[180%] border border-white/50 shadow-lg shadow-slate-900/10;
+}
+
+.nav-content {
+  @apply w-full max-w-[1150px] h-16 flex items-center justify-between px-7 rounded-none transition-all duration-500 ease-out;
+}
+
+.logo {
+  @apply flex items-center gap-3;
+}
+
+.logo-image {
+  @apply block;
+}
+
+.nav-links {
+  @apply flex gap-8 items-center;
+}
+
+.nav-links a {
+  @apply text-primary no-underline text-sm font-semibold opacity-75 transition-all duration-300 ease-out hover:opacity-100 hover:text-accent;
+}
+
+/* Hero */
+.hero {
+  @apply h-screen flex items-center relative bg-gradient-to-br from-sky-50 to-white;
+}
+
+.hero-content {
+  @apply max-w-2xl;
+}
+
+.hero h1 {
+  @apply text-5xl md:text-7xl lg:text-8xl mb-5 leading-tight;
+}
+
+.hero p {
+  @apply text-text-secondary text-xl mb-10 max-w-xl;
+}
+
+.hero-btns {
+  @apply flex gap-5;
+}
+
+/* Widgets */
+.widget-section {
+  @apply -mt-24 relative z-10;
+}
+
+.widget-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-8;
+}
+
+.input-group {
+  @apply flex gap-2.5 mb-4 mt-5;
+}
+
+input, select {
+  @apply bg-white border border-slate-200 rounded px-3 py-3 text-text-primary flex-1 font-inter focus:outline-none focus:border-accent;
+}
+
+.calc-result {
+  @apply mt-4 text-center font-bold text-accent;
+}
+
+/* Services */
+.services-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+.service-card {
+  @apply text-center transition-all duration-300 ease-out hover:-translate-y-2;
+}
+
+.service-icon {
+  @apply w-16 h-16 bg-blue-500/10 text-accent-blue rounded-full flex items-center justify-center mx-auto mb-5;
+}
+
+/* Stats */
+.stats-section {
+  @apply bg-gradient-to-br from-slate-50 to-white text-center py-20;
+}
+
+.stats-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10;
+}
+
+.stat-item h2 {
+  @apply text-5xl text-accent mb-3;
+}
+
+/* How It Works */
+.steps-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10;
+}
+
+.step-card {
+  @apply text-center;
+}
+
+.step-number {
+  @apply w-12 h-12 bg-accent-blue text-white rounded-full flex items-center justify-center mx-auto mb-5 font-bold text-lg shadow-lg shadow-accent-blue/25;
+}
+
+/* Trust Section */
+.flex-between {
+  @apply flex items-center gap-12 flex-wrap;
+}
+
+.image-half, .content-half {
+  @apply flex-1 min-w-80;
+}
+
+.image-half img {
+  @apply w-full rounded-xl;
+}
+
+/* Footer */
+.footer {
+  @apply bg-white py-20 px-0 border-t border-slate-200;
+}
+
+.footer-content {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-12 mb-10;
+}
+
+.social-links {
+  @apply flex gap-5 mt-6;
+}
+
+.social-links a {
+  @apply text-text-secondary transition-all duration-300 ease-out hover:text-accent hover:-translate-y-1;
+}
+
+.footer-links h3 {
+  @apply mb-6 text-lg;
+}
+
+.footer-links p {
+  @apply flex items-center gap-3 mb-4 text-text-secondary;
+}
+
+.copyright {
+  @apply text-center pt-8 border-t border-slate-200 text-text-secondary text-sm;
+}
+
+/* Custom components and utilities */
+.glass-card {
+  @apply bg-white/75 backdrop-blur-[10px] border border-slate-200/50 rounded-xl p-8;
+}
+
+.btn {
+  @apply inline-block px-7 py-3 rounded-lg font-semibold text-sm no-underline cursor-pointer border border-transparent transition-all duration-300 ease-out;
+}
+
+.btn-primary {
+  @apply bg-accent-blue border-accent-blue text-white;
+}
+
+.btn-primary:hover {
+  @apply bg-blue-600 -translate-y-1;
+}
+
+.btn-blue {
+  @apply bg-accent-blue border-accent-blue text-slate-900;
+}
+
+.btn-blue:hover {
+  @apply bg-blue-600 -translate-y-1;
+}
+
+.btn-gold {
+  @apply bg-accent text-white;
+}
+
+.btn-gold:hover {
+  @apply bg-sky-500 -translate-y-1 shadow-lg shadow-sky-500/25;
+}
+
+.accent-color {
+  @apply text-accent-blue;
+}
+
+.mb-20 {
+  @apply mb-5;
+}
+
+.mb-50 {
+  @apply mb-12;
+}
+
+.mt-20 {
+  @apply mt-5;
+}
+
+.list-none a {
+  @apply text-text-secondary no-underline transition-all duration-300 ease-out;
+}
+
+.list-none a:hover {
+  @apply text-accent;
+}
