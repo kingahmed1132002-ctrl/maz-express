@@ -113,7 +113,7 @@ const HowItWorks = () => {
                 <BranchCard
                   side="right"
                   title="تدفع بنفسك"
-                  description="اشترِ بنفسك من أي موقع واستخدم موقع مخازننا في دبي أو تركيا كعنوان للشحن."
+                  description="استفيد من خدمات شركة ماز من خلال شراء المنتجات واختيار موقع الاستلام في مخازننا بـدبي وتركيا كعناوين إستلام"
                   icon="🛒"
                   label="الخيار الأول"
                   isHovered={hoveredBranch === 'right'}
@@ -123,8 +123,8 @@ const HowItWorks = () => {
               <div className="flex-1" onMouseEnter={() => setHoveredBranch('left')} onMouseLeave={() => setHoveredBranch(null)}>
                 <BranchCard
                   side="left"
-                  title="احنا ندفعلك"
-                  description="إذا كنت لا تملك بطاقة دفع دولية، فقط أرسل لنا روابط المنتجات وسنقوم نحن بعملية الشراء والدفع بدلاً منك."
+                  title="نحن ندفعلك"
+                  description= "إذا كنت لا تملك بطاقة دفع دولية، فقط أرسل لنا روابط المنتجات وسنقوم نحن بعملية الشراء والدفع بدلاً منك بعد ايداع قيمتهن الى محفظة ماز."
                   icon="💳"
                   label="الخيار الثاني"
                   isHovered={hoveredBranch === 'left'}
