@@ -65,10 +65,14 @@ const Navbar = () => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="relative text-slate-700 no-underline text-sm font-semibold opacity-80 transition-all duration-300 ease-out hover:opacity-100 hover:text-accent group"
+                className={`relative no-underline text-sm font-semibold opacity-80 transition-all duration-300 ease-out hover:opacity-100 group ${
+                  scrolled ? 'text-slate-700 hover:text-accent' : 'text-white/90 hover:text-white'
+                }`}
               >
                 {item.text}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
+                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
+                  scrolled ? 'bg-accent' : 'bg-white'
+                }`}></span>
               </motion.a>
             ))}
           </div>

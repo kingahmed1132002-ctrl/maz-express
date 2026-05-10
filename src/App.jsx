@@ -65,13 +65,13 @@ const App = () => {
         {/* ① Hero ──────────────────────────────── white */}
         <Hero />
 
-        {/* Hero → Widgets  (transparent over sea → pale-sky-blue) */}
-        <div className="relative z-10 -mt-24 md:-mt-32 pointer-events-none">
+        {/* Hero → Widgets  (dark navy sea bottom → pale-sky-blue) */}
+        <div className="relative z-10 pointer-events-none">
           <SectionConnector
             variant={0}
-            from="transparent" to={C.widgets}
-            accentColor="#17a9ff" accentSecondary="#60c8ff"
-            heightClass="h-24 md:h-32"
+            from="#040c16" to={C.widgets}
+            accentColor="#2BB7DA" accentSecondary="#0B3C6D"
+            heightClass="h-20 md:h-28"
           />
         </div>
 

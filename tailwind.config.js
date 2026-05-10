@@ -7,23 +7,43 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#0f172a',
-        secondary: '#f3f4f6',
-        accent: '#17a9ff',
-        'accent-blue': '#2563eb',
-        'accent-dark': '#0f78d7',
-        'accent-gold': '#f59e0b',
-        'text-primary': '#111827',
-        'text-secondary': '#4b5563',
-        'bg-dark': '#f8fafc',
+        /* ── Brand palette (from logo) ── */
+        navy:           '#0B3C6D',   // logo dark navy
+        'navy-dark':    '#072848',   // deeper navy
+        'navy-light':   '#1a5a9a',
+        cyan:           '#2BB7DA',   // logo cyan
+        'cyan-dark':    '#1a9abf',
+        'cyan-light':   '#6dd5ed',
+        /* ── Aliases used across codebase ── */
+        accent:         '#2BB7DA',
+        'accent-blue':  '#0B3C6D',
+        'accent-dark':  '#1a9abf',
+        primary:        '#0B3C6D',
+        'text-primary': '#0B3C6D',
+        'text-secondary':'#4b6a8a',
+        'bg-light':     '#f0f8fc',
+        'bg-white':     '#ffffff',
       },
       fontFamily: {
-        'inter': ['Inter', 'sans-serif'],
-        'outfit': ['Outfit', 'sans-serif'],
+        sans:   ['Tajawal', 'Inter', 'sans-serif'],
+        latin:  ['Inter', 'sans-serif'],
+        outfit: ['Outfit', 'sans-serif'],
       },
-      backdropBlur: {
-        xs: '2px',
-      }
+      backdropBlur: { xs: '2px' },
+      animation: {
+        'float': 'float 6s ease-in-out infinite',
+        'shimmer': 'shimmer 3s linear infinite',
+      },
+      keyframes: {
+        float: {
+          '0%,100%': { transform: 'translateY(0px)' },
+          '50%':     { transform: 'translateY(-12px)' },
+        },
+        shimmer: {
+          '0%':   { backgroundPosition: '200% center' },
+          '100%': { backgroundPosition: '-200% center' },
+        },
+      },
     },
   },
   plugins: [],

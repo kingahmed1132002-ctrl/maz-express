@@ -2,29 +2,31 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ShieldCheck } from 'lucide-react';
 
-const TrustSection = ({ fadeInUp, bgColor = '#f0f4f8' }) => {
+const TrustSection = ({ fadeInUp }) => {
   return (
-    <section className="section-padding relative overflow-hidden" style={{ backgroundColor: bgColor }}>
+    <section className="section-padding relative overflow-hidden bg-white">
       <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-accent-blue/5 rounded-full blur-[100px] -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+
       <div className="container mx-auto px-5 relative z-10">
-        <motion.div className="glass-card flex-between relative overflow-hidden group" {...fadeInUp}>
-          {/* Subtle gradient overlay on hover */}
-          <div className="absolute inset-0 bg-gradient-to-r from-accent-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-          
-          <div className="image-half relative z-10 transform transition-transform duration-700 group-hover:scale-105">
-            <div className="absolute inset-0 bg-gradient-to-t from-white/40 to-transparent rounded-2xl z-10" />
-            <img src="/delivery.png" alt="Delivery" className="rounded-2xl shadow-lg shadow-blue-900/10" />
-          </div>
-          
-          <div className="content-half relative z-10">
-            <div className="w-16 h-16 bg-gradient-to-br from-accent-blue/10 to-accent-blue/5 rounded-2xl flex items-center justify-center mb-6 shadow-inner border border-accent-blue/20">
+        <motion.div
+          className="flex flex-col md:flex-row items-center justify-between gap-12"
+          {...fadeInUp}
+        >
+          {/* CONTENT BLOCK */}
+          <div className="w-full md:w-1/2 text-right order-1">
+            <div className="w-16 h-16 bg-accent-blue/10 rounded-2xl flex items-center justify-center mb-6 ml-auto border border-accent-blue/10">
               <ShieldCheck className="text-accent-blue" size={32} />
             </div>
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-6 leading-tight">عناية بلا <span className="bg-gradient-to-l from-accent-blue to-cyan-500 bg-clip-text text-transparent">استثناءات</span></h2>
-            <p className="text-slate-500 leading-relaxed text-lg mb-8">
+
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">
+              عناية بلا <span className="bg-gradient-to-l from-accent-blue to-cyan-500 bg-clip-text text-transparent">استثناءات</span>
+            </h2>
+
+            <p className="text-slate-500 leading-relaxed text-lg mb-8 max-w-xl ml-auto">
               نتعامل مع كل شحنة بعناية فائقة، لضمان وصول بضائعك بأمان وموثوقية عالية من إسطنبول إلى باب منزلك. راحة البال مضمونة مع كل خطوة.
             </p>
-            <a href="#contact" className="inline-flex items-center gap-3 bg-gradient-to-r from-accent-blue to-cyan-600 text-white px-8 py-4 rounded-xl font-bold shadow-lg shadow-accent-blue/30 hover:shadow-xl hover:shadow-accent-blue/40 transition-all duration-300 hover:-translate-y-1">
+
+            <a href="#contact" className="inline-flex items-center gap-3 bg-gradient-to-r from-accent-blue to-cyan-600 text-white px-8 py-4 rounded-xl font-bold shadow-lg shadow-accent-blue/20 hover:shadow-xl hover:shadow-accent-blue/30 transition-all duration-300 hover:-translate-y-1">
               تواصل معنا اليوم
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="rotate-180">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -32,6 +34,62 @@ const TrustSection = ({ fadeInUp, bgColor = '#f0f4f8' }) => {
               </svg>
             </a>
           </div>
+
+          {/* GIF BLOCK */}
+          <div className="w-full md:w-1/2 flex justify-center md:justify-end order-2">
+            <motion.div
+              className="relative border-2 border-accent-blue/30 overflow-hidden bg-accent-blue/5 backdrop-blur-sm shadow-2xl shadow-accent-blue/10 w-full max-w-md aspect-square flex items-center justify-center"
+              animate={{
+                borderRadius: [
+                  "60% 40% 30% 70% / 60% 30% 70% 40%",
+                  "30% 60% 70% 40% / 50% 60% 30% 60%",
+                  "50% 40% 30% 40% / 40% 50% 60% 50%",
+                  "60% 40% 30% 70% / 60% 30% 70% 40%"
+                ],
+                y: [0, -15, 0],
+                rotate: [0, 2, -2, 0]
+              }}
+              whileHover={{ 
+                scale: 1.05,
+                borderColor: "rgba(14, 165, 233, 0.6)",
+                boxShadow: "0 30px 60px -12px rgba(14, 165, 233, 0.3)"
+              }}
+              transition={{
+                borderRadius: {
+                  duration: 10,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                },
+                y: {
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                },
+                rotate: {
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                },
+                scale: { duration: 0.4 },
+                borderColor: { duration: 0.4 }
+              }}
+            >
+              <img
+                src="/delivery2.gif"
+                alt="Delivery"
+                className="w-full h-full object-cover mix-blend-multiply relative z-10"
+                style={{ backgroundColor: 'transparent' }}
+              />
+              
+              {/* Animated Glow Overlay */}
+              <motion.div 
+                className="absolute inset-0 bg-gradient-to-br from-accent-blue/20 to-transparent pointer-events-none"
+                animate={{ opacity: [0.3, 0.6, 0.3] }}
+                transition={{ duration: 4, repeat: Infinity }}
+              />
+            </motion.div>
+          </div>
+
         </motion.div>
       </div>
     </section>
