@@ -14,28 +14,28 @@ export default function MazExpressLogo({
   const fade = (delay = 0) =>
     animate
       ? {
-          initial: { opacity: 0, y: 6 },
-          animate: {
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.6, delay },
-          },
-        }
+        initial: { opacity: 0, y: 6 },
+        animate: {
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.6, delay },
+        },
+      }
       : {};
 
   const drawPath = (delay = 0) =>
     animate
       ? {
-          initial: { pathLength: 0, opacity: 0 },
-          animate: {
-            pathLength: 1,
-            opacity: 1,
-            transition: {
-              pathLength: { duration: 1, delay, ease: "easeInOut" },
-              opacity: { duration: 0.3, delay },
-            },
+        initial: { pathLength: 0, opacity: 0 },
+        animate: {
+          pathLength: 1,
+          opacity: 1,
+          transition: {
+            pathLength: { duration: 1, delay, ease: "easeInOut" },
+            opacity: { duration: 0.3, delay },
           },
-        }
+        },
+      }
       : {};
 
   return (
@@ -68,13 +68,13 @@ export default function MazExpressLogo({
       <motion.g
         {...(animate
           ? {
-              initial: { opacity: 0, scale: 0.9 },
-              animate: {
-                opacity: 1,
-                scale: 1,
-                transition: { duration: 0.5, delay: 0.3 },
-              },
-            }
+            initial: { opacity: 0, scale: 0.9 },
+            animate: {
+              opacity: 1,
+              scale: 1,
+              transition: { duration: 0.5, delay: 0.3 },
+            },
+          }
           : {})}
       >
         {/* Plane */}

@@ -65,13 +65,15 @@ const App = () => {
         {/* ① Hero ──────────────────────────────── white */}
         <Hero />
 
-        {/* Hero → Widgets  (white → pale-sky-blue) */}
-        <SectionConnector
-          variant={0}
-          from={C.hero} to={C.widgets}
-          accentColor="#17a9ff" accentSecondary="#60c8ff"
-          heightClass="h-24 md:h-32"
-        />
+        {/* Hero → Widgets  (transparent over sea → pale-sky-blue) */}
+        <div className="relative z-10 -mt-24 md:-mt-32 pointer-events-none">
+          <SectionConnector
+            variant={0}
+            from="transparent" to={C.widgets}
+            accentColor="#17a9ff" accentSecondary="#60c8ff"
+            heightClass="h-24 md:h-32"
+          />
+        </div>
 
         {/* ② Widgets ───────────────────────────── pale sky blue */}
         <Widgets fadeInUp={fadeInUp} bgColor={C.widgets} />
