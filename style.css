@@ -23,7 +23,7 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--bg-dark);
+    background-color: #ffffff;
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
@@ -283,7 +283,6 @@ input:focus {
 
 /* Contact & Footer */
 .footer {
-    background: #020c1b;
     padding: 60px 0 20px;
     border-top: 1px solid var(--glass-border);
 }
@@ -331,8 +330,6 @@ input:focus {
 
 /* Stats */
 .stats-section {
-    background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.9)), 
-                url('warehouse.png') center/cover fixed no-repeat;
     text-align: center;
 }
 

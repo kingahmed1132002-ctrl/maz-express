@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 
-const HowItWorks = () => {
+const HowItWorks = ({ bgColor = '#f8fbff' }) => {
   const containerRef = useRef(null);
   const [hoveredBranch, setHoveredBranch] = useState(null);
 
@@ -20,8 +20,9 @@ const HowItWorks = () => {
     <section
       ref={containerRef}
       id="how-it-works"
-      className="py-32 bg-[#fafbff] relative overflow-hidden"
+      className="py-32 relative overflow-hidden"
       dir="rtl"
+      style={{ backgroundColor: bgColor }}
     >
       {/* Decorative Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden opacity-20">

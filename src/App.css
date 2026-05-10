@@ -34,7 +34,7 @@ nav.scrolled {
 
 /* Hero */
 .hero {
-  @apply h-screen flex items-center relative bg-gradient-to-br from-sky-50 to-white;
+  @apply h-screen flex items-center relative bg-white;
 }
 
 .hero-content {
@@ -80,16 +80,20 @@ input, select {
 }
 
 .service-card {
-  @apply text-center transition-all duration-300 ease-out hover:-translate-y-2;
+  @apply text-center transition-all duration-500 ease-out hover:-translate-y-3 relative z-10;
 }
 
 .service-icon {
-  @apply w-16 h-16 bg-blue-500/10 text-accent-blue rounded-full flex items-center justify-center mx-auto mb-5;
+  @apply w-20 h-20 bg-gradient-to-br from-accent-blue/10 to-accent-blue/5 text-accent-blue rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-inner border border-accent-blue/20 transition-all duration-500;
+}
+
+.service-card:hover .service-icon {
+  @apply bg-gradient-to-br from-accent-blue to-cyan-500 text-white shadow-xl shadow-accent-blue/30 scale-110 -rotate-3;
 }
 
 /* Stats */
 .stats-section {
-  @apply bg-gradient-to-br from-slate-50 to-white text-center py-20;
+  @apply text-center py-20;
 }
 
 .stats-grid {
@@ -128,7 +132,7 @@ input, select {
 
 /* Footer */
 .footer {
-  @apply bg-white py-20 px-0 border-t border-slate-200;
+  @apply py-20 px-0;
 }
 
 .footer-content {
@@ -157,7 +161,16 @@ input, select {
 
 /* Custom components and utilities */
 .glass-card {
-  @apply bg-white/75 backdrop-blur-[10px] border border-slate-200/50 rounded-xl p-8;
+  @apply bg-white/80 backdrop-blur-xl border border-white/60 rounded-3xl p-8 shadow-xl shadow-slate-200/40 transition-all duration-500 relative overflow-hidden;
+}
+
+.glass-card::before {
+  content: '';
+  @apply absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/40 to-transparent pointer-events-none;
+}
+
+.glass-card:hover {
+  @apply shadow-2xl shadow-blue-900/10 -translate-y-2 border-white;
 }
 
 .btn {
@@ -185,7 +198,7 @@ input, select {
 }
 
 .btn-gold:hover {
-  @apply bg-sky-500 -translate-y-1 shadow-lg shadow-sky-500/25;
+  @apply bg-accent-dark -translate-y-1 shadow-lg shadow-accent/25;
 }
 
 .accent-color {
