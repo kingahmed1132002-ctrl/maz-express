@@ -17,6 +17,8 @@ body {
   overflow-x: hidden;
   direction: rtl;
   text-align: right;
+  background-color: #ffffff;
+  color: #111827;
 }
 
 h1, h2, h3, h4 {

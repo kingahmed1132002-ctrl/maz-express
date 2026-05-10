@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 
+<<<<<<< HEAD
 const Widgets = () => {
+=======
+const Widgets = ({ fadeInUp, bgColor = '#eef6ff' }) => {
+>>>>>>> 2ed951d320eefb8aef127ea4aabca8b07725d0f6
   const [destination, setDestination] = useState('turkey');
   const [shippingtype, setShippingtype] = useState('air');
 
@@ -64,6 +68,7 @@ const Widgets = () => {
       ];
 
   return (
+<<<<<<< HEAD
     <section className="min-h-screen bg-gradient-to-br from-sky-100 via-sky-50 to-cyan-100 px-6 py-12 font-sans flex items-center justify-center rtl">
 
       <div className="w-full max-w-[480px] overflow-hidden rounded-[32px] border border-sky-200 bg-white shadow-[0_24px_80px_rgba(14,165,233,0.12),0_4px_16px_rgba(14,165,233,0.06)]">
@@ -79,21 +84,51 @@ const Widgets = () => {
 
           <div className="relative z-10 mb-5 flex items-center gap-4">
             <div className="flex h-[52px] w-[52px] items-center justify-center rounded-2xl border border-white/20 bg-white/20 text-[26px]">
+=======
+    <section
+      className="section-padding flex items-center justify-center rtl"
+      style={{ backgroundColor: bgColor }}
+    >
+
+      <div className="w-full max-w-[480px] overflow-hidden rounded-[32px] border border-white/60 bg-white/70 backdrop-blur-xl shadow-[0_32px_80px_rgba(14,165,233,0.15),0_8px_32px_rgba(14,165,233,0.1)] transition-transform duration-500 hover:shadow-[0_40px_100px_rgba(14,165,233,0.2)]">
+
+        {/* Header */}
+        <div className="relative overflow-hidden bg-gradient-to-br from-[#0b2d6b] via-accent-blue to-cyan-500 px-8 pt-10 pb-8">
+
+          <div className="absolute -left-12 -top-12 h-[200px] w-[200px] rounded-full bg-gradient-to-tr from-white/0 to-white/20 blur-2xl" />
+          <div className="absolute -bottom-14 -right-8 h-[160px] w-[160px] rounded-full bg-gradient-to-br from-white/20 to-white/0 blur-xl" />
+          <div className="absolute right-20 top-3 h-20 w-20 rounded-full bg-white/10 blur-lg" />
+
+          <div className="relative z-10 mb-6 flex items-center gap-5">
+            <div className="flex h-[60px] w-[60px] flex-shrink-0 items-center justify-center rounded-2xl border border-white/30 bg-white/20 backdrop-blur-md text-[30px] shadow-lg shadow-black/10">
+>>>>>>> 2ed951d320eefb8aef127ea4aabca8b07725d0f6
               🧮
             </div>
 
             <div>
+<<<<<<< HEAD
               <h1 className="mb-1 text-[21px] font-extrabold text-white">
                 حساب تكلفة الشحن
               </h1>
 
               <p className="text-sm text-white/75">
                 احسب سعر شحنتك في ثوانٍ
+=======
+              <h1 className="mb-1.5 text-[24px] font-black text-white tracking-wide">
+                حساب التكلفة
+              </h1>
+              <p className="text-sm font-medium text-white/80">
+                تقدير فوري لأسعار شحنتك
+>>>>>>> 2ed951d320eefb8aef127ea4aabca8b07725d0f6
               </p>
             </div>
           </div>
 
+<<<<<<< HEAD
           <div className="relative z-10 flex flex-wrap gap-2">
+=======
+          <div className="relative z-10 flex flex-wrap gap-2.5 mt-2">
+>>>>>>> 2ed951d320eefb8aef127ea4aabca8b07725d0f6
             {[
               ['✈️', 'جوي'],
               ['🚢', 'بحري'],
@@ -102,7 +137,11 @@ const Widgets = () => {
             ].map(([icon, label]) => (
               <div
                 key={label}
+<<<<<<< HEAD
                 className="flex items-center gap-1 rounded-full border border-white/20 bg-white/15 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm"
+=======
+                className="flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-bold text-white backdrop-blur-md shadow-sm"
+>>>>>>> 2ed951d320eefb8aef127ea4aabca8b07725d0f6
               >
                 <span>{icon}</span>
                 {label}

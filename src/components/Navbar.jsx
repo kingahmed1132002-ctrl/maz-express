@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import MazLogo from './MazLogo';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -42,20 +43,18 @@ const Navbar = () => {
         >
 
           {/* Logo Section */}
-          <motion.div
-            className="flex items-center gap-3"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          <motion.a
+            href="#"
+            className="flex items-center"
+            whileHover={{ scale: 1.04 }}
+            transition={{ type: "spring", stiffness: 400, damping: 14 }}
           >
-            <img
-              src="/logo.png"
-              alt="ماز إكسبرس"
-              className={`transition-all duration-500 ease-out ${scrolled ? 'h-9' : 'h-11'}`}
+            <MazLogo
+              size={scrolled ? 36 : 44}
+              animate={false}
+              className="transition-all duration-400"
             />
-            <span className={`font-bold transition-all duration-300 ${scrolled ? 'text-lg' : 'text-xl'} text-slate-900`}>
-              ماز إكسبرس
-            </span>
-          </motion.div>
+          </motion.a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex gap-8 items-center">
