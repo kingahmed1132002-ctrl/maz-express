@@ -169,53 +169,6 @@ export default function Hero() {
           نوفر حلول شحن متكاملة براً وبحراً وجواً — بدقة في المواعيد، وأمان في التوصيل، واحترافية في كل خطوة.
         </motion.p>
 
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.85 }}
-          style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}
-        >
-          <button
-            style={{
-              padding: '14px 36px',
-              borderRadius: 999,
-              background: 'linear-gradient(135deg, #2BB7DA 0%, #0B3C6D 100%)',
-              color: '#fff',
-              fontFamily: "'Tajawal', sans-serif",
-              fontWeight: 700,
-              fontSize: '1rem',
-              border: 'none',
-              cursor: 'pointer',
-              boxShadow: '0 8px 32px rgba(43,183,218,0.4)',
-              transition: 'transform 0.2s, box-shadow 0.2s',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.05)'; e.currentTarget.style.boxShadow = '0 12px 40px rgba(43,183,218,0.55)'; }}
-            onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)';    e.currentTarget.style.boxShadow = '0 8px 32px rgba(43,183,218,0.4)'; }}
-          >
-            ابدأ شحنتك الآن
-          </button>
-
-          <button
-            style={{
-              padding: '14px 36px',
-              borderRadius: 999,
-              background: 'rgba(255,255,255,0.08)',
-              color: '#fff',
-              fontFamily: "'Tajawal', sans-serif",
-              fontWeight: 700,
-              fontSize: '1rem',
-              border: '2px solid rgba(255,255,255,0.35)',
-              cursor: 'pointer',
-              backdropFilter: 'blur(8px)',
-              transition: 'background 0.2s, border-color 0.2s',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.16)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.65)'; }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.35)'; }}
-          >
-            تتبع شحنتك
-          </button>
-        </motion.div>
 
         {/* Dots */}
         <motion.div
