@@ -12,63 +12,55 @@ export default function Preloader({ show }) {
       {show && (
         <motion.div
           key="preloader"
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-white"
-          initial={{ opacity: 1 }}
-          exit={{
-            opacity: 0,
-            scale: 1.04,
-            transition: { duration: 0.55, ease: [0.4, 0, 0.2, 1] },
+          className="fixed inset-0 z-[1000] flex items-center justify-center overflow-hidden bg-white px-5 sm:px-8"
+          initial={{ scaleY: 1, transformOrigin: "top" }}
+          animate={{ scaleY: 1, transformOrigin: "top" }}
+          exit={{ 
+            scaleY: 0,
+            transformOrigin: "top",
+            transition: { 
+              duration: 0.9,
+              ease: [0.76, 0, 0.24, 1],
+              delay: 0.1
+            } 
           }}
+          style={{ willChange: "transform" }}
         >
           {/* Soft ambient glow */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
-              background:
-                "radial-gradient(ellipse 60% 45% at 50% 45%, rgba(23,169,255,0.10) 0%, transparent 80%)",
+              background: "rgba(54,198,244,0.04)",
             }}
           />
 
-          {/* Logo draw-on */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.88 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.55, ease: [0.4, 0, 0.2, 1] }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex w-full max-w-[24rem] flex-col items-center text-center relative z-10"
           >
+            {/* Logo */}
             <MazLogo size={80} animate={true} />
+
+            {/* Loading line */}
+            <div className="mt-16 flex w-full max-w-72 flex-col items-center gap-4 sm:mt-20 md:mt-24">
+              <span className="text-center text-[0.72rem] font-semibold uppercase tracking-[0.55em] text-[#36C6F4] sm:text-sm sm:tracking-[0.8em]">
+                Loading
+              </span>
+              <div className="relative h-[1px] w-full overflow-hidden bg-[#36C6F4]/20">
+                <motion.div 
+                  className="absolute h-full bg-[#36C6F4] w-full"
+                  initial={{ x: '-100%' }}
+                  animate={{ x: '100%' }}
+                  transition={{ 
+                    repeat: Infinity, 
+                    duration: 1.5, 
+                    ease: "easeInOut" 
+                  }}
+                />
+              </div>
+            </div>
           </motion.div>
-
-          {/* Shimmer progress bar */}
-          <div className="mt-10 w-40 h-[3px] rounded-full bg-slate-100 overflow-hidden">
-            <motion.div
-              className="h-full rounded-full"
-              style={{
-                background: "linear-gradient(90deg, #17a9ff, #2563eb, #17a9ff)",
-                backgroundSize: "200% 100%",
-              }}
-              initial={{ width: "0%", backgroundPosition: "100% 0" }}
-              animate={{ width: "100%", backgroundPosition: "0% 0" }}
-              transition={{ duration: 1.9, ease: "easeInOut" }}
-            />
-          </div>
-
-          {/* Small dots pulsing */}
-          <div className="flex gap-2 mt-6">
-            {[0, 1, 2].map((i) => (
-              <motion.div
-                key={i}
-                className="w-1.5 h-1.5 rounded-full"
-                style={{ background: "#17a9ff" }}
-                animate={{ opacity: [0.3, 1, 0.3], scale: [0.8, 1.2, 0.8] }}
-                transition={{
-                  duration: 1.2,
-                  repeat: Infinity,
-                  delay: i * 0.22,
-                  ease: "easeInOut",
-                }}
-              />
-            ))}
-          </div>
         </motion.div>
       )}
     </AnimatePresence>

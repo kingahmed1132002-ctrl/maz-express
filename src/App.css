@@ -9,7 +9,7 @@ nav {
 }
 
 nav.scrolled {
-  @apply max-w-[900px] h-16 rounded-[50px] bg-white/85 backdrop-blur-[16px] saturate-[180%] border border-white/50 shadow-lg shadow-slate-900/10;
+  @apply max-w-[900px] h-16 rounded-[50px] bg-white/85 backdrop-blur-[16px] saturate-[180%] border border-cyan/20 shadow-lg shadow-cyan/10;
 }
 
 .nav-content {
@@ -67,7 +67,7 @@ nav.scrolled {
 }
 
 input, select {
-  @apply bg-white border border-slate-200 rounded px-3 py-3 text-text-primary flex-1 font-inter focus:outline-none focus:border-accent;
+  @apply bg-white border border-cyan/20 rounded px-3 py-3 text-text-primary flex-1 font-latin focus:outline-none focus:border-accent;
 }
 
 .calc-result {
@@ -84,11 +84,11 @@ input, select {
 }
 
 .service-icon {
-  @apply w-20 h-20 bg-gradient-to-br from-accent-blue/10 to-accent-blue/5 text-accent-blue rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-inner border border-accent-blue/20 transition-all duration-500;
+  @apply w-20 h-20 bg-cyan/10 text-cyan rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-inner border border-cyan/20 transition-all duration-500;
 }
 
 .service-card:hover .service-icon {
-  @apply bg-gradient-to-br from-accent-blue to-cyan-500 text-white shadow-xl shadow-accent-blue/30 scale-110 -rotate-3;
+  @apply bg-cyan text-navy shadow-xl shadow-cyan/30 scale-110 -rotate-3;
 }
 
 /* Stats */
@@ -114,7 +114,7 @@ input, select {
 }
 
 .step-number {
-  @apply w-12 h-12 bg-accent-blue text-white rounded-full flex items-center justify-center mx-auto mb-5 font-bold text-lg shadow-lg shadow-accent-blue/25;
+  @apply w-12 h-12 bg-cyan text-navy rounded-full flex items-center justify-center mx-auto mb-5 font-bold text-lg shadow-cyan/25;
 }
 
 /* Trust Section */
@@ -156,21 +156,21 @@ input, select {
 }
 
 .copyright {
-  @apply text-center pt-8 border-t border-slate-200 text-text-secondary text-sm;
+  @apply text-center pt-8 border-t border-cyan/20 text-text-secondary text-sm;
 }
 
 /* Custom components and utilities */
 .glass-card {
-  @apply bg-white/80 backdrop-blur-xl border border-white/60 rounded-3xl p-8 shadow-xl shadow-slate-200/40 transition-all duration-500 relative overflow-hidden;
+  @apply bg-white/80 backdrop-blur-xl border border-cyan/15 rounded-3xl p-8 shadow-xl shadow-cyan/10 transition-all duration-500 relative overflow-hidden;
 }
 
 .glass-card::before {
   content: '';
-  @apply absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/40 to-transparent pointer-events-none;
+  @apply absolute top-0 left-0 w-full h-full bg-white/20 pointer-events-none;
 }
 
 .glass-card:hover {
-  @apply shadow-2xl shadow-blue-900/10 -translate-y-2 border-white;
+  @apply shadow-2xl shadow-cyan/10 -translate-y-2 border-white;
 }
 
 .btn {
@@ -178,23 +178,23 @@ input, select {
 }
 
 .btn-primary {
-  @apply bg-accent-blue border-accent-blue text-white;
+  @apply bg-cyan border-cyan text-navy;
 }
 
 .btn-primary:hover {
-  @apply bg-blue-600 -translate-y-1;
+  @apply bg-cyan-dark -translate-y-1;
 }
 
 .btn-blue {
-  @apply bg-accent-blue border-accent-blue text-slate-900;
+  @apply bg-cyan border-cyan text-navy;
 }
 
 .btn-blue:hover {
-  @apply bg-blue-600 -translate-y-1;
+  @apply bg-cyan-dark -translate-y-1;
 }
 
 .btn-gold {
-  @apply bg-accent text-white;
+  @apply bg-accent text-navy;
 }
 
 .btn-gold:hover {
@@ -202,7 +202,7 @@ input, select {
 }
 
 .accent-color {
-  @apply text-accent-blue;
+  @apply text-cyan;
 }
 
 .mb-20 {

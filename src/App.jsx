@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Widgets from './components/Widgets';
@@ -39,9 +40,22 @@ const App = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    // 1) Force scroll to top on mount
+    window.scrollTo(0, 0);
+
+    // 2) Disable scrolling while loading
+    if (loading) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
     const t = setTimeout(() => setLoading(false), 2400);
-    return () => clearTimeout(t);
-  }, []);
+    return () => {
+      clearTimeout(t);
+      document.body.style.overflow = 'unset';
+    };
+  }, [loading]);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -59,19 +73,19 @@ const App = () => {
   return (
     <>
       <Preloader show={loading} />
-      <div className="app">
+      <div className="app bg-white">
         <Navbar scrolled={scrolled} />
 
         {/* ① Hero ──────────────────────────────── white */}
         <Hero />
 
-        {/* Hero → Widgets  (dark navy sea bottom → pale-sky-blue) */}
-        <div className="relative z-10 pointer-events-none">
+        {/* Hero → Widgets  (transparent over sea → pale-sky-blue) */}
+        <div className="relative z-10 -mt-24 md:-mt-32 pointer-events-none">
           <SectionConnector
             variant={0}
-            from="#040c16" to={C.widgets}
-            accentColor="#2BB7DA" accentSecondary="#0B3C6D"
-            heightClass="h-20 md:h-28"
+            from="transparent" to={C.widgets}
+            accentColor="#36C6F4" accentSecondary="#36C6F4"
+            heightClass="h-24 md:h-32"
           />
         </div>
 
@@ -82,7 +96,7 @@ const App = () => {
         <SectionConnector
           variant={1}
           from={C.widgets} to={C.services}
-          accentColor="#17a9ff" accentSecondary="#2563eb"
+          accentColor="#36C6F4" accentSecondary="#36C6F4"
           heightClass="h-20 md:h-24"
         />
 
@@ -94,7 +108,7 @@ const App = () => {
         <SectionConnector
           variant={3}
           from={C.services} to={C.howItWorks}
-          accentColor="#17a9ff" accentSecondary="#2563eb"
+          accentColor="#36C6F4" accentSecondary="#36C6F4"
           heightClass="h-28 md:h-36"
         />
 
@@ -105,7 +119,7 @@ const App = () => {
         <SectionConnector
           variant={4}
           from={C.howItWorks} to={C.trust}
-          accentColor="#17a9ff" accentSecondary="#2563eb"
+          accentColor="#36C6F4" accentSecondary="#36C6F4"
           heightClass="h-24 md:h-32"
         />
 
@@ -116,7 +130,7 @@ const App = () => {
         <SectionConnector
           variant={5}
           from={C.trust} to={C.footer}
-          accentColor="#17a9ff" accentSecondary="#2563eb"
+          accentColor="#36C6F4" accentSecondary="#36C6F4"
           heightClass="h-24 md:h-32"
         />
 

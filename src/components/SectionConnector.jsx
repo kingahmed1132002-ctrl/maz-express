@@ -57,8 +57,8 @@ const SHAPES = {
 export default function SectionConnector({
   from = "#ffffff",
   to = "#ffffff",
-  accentColor = "#17a9ff",
-  accentSecondary = "#2563eb",
+  accentColor = "#36C6F4",
+  accentSecondary = "#36C6F4",
   heightClass = "h-20 md:h-28",
   variant = 0,
 }) {
@@ -97,13 +97,6 @@ export default function SectionConnector({
         preserveAspectRatio="none"
       >
         <defs>
-          <linearGradient id={gradId} x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%"   stopColor="rgba(0,0,0,0)" />
-            <stop offset="12%"  stopColor={accentSecondary} stopOpacity="0.5" />
-            <stop offset="50%"  stopColor={accentColor} />
-            <stop offset="88%"  stopColor={accentSecondary} stopOpacity="0.5" />
-            <stop offset="100%" stopColor="rgba(0,0,0,0)" />
-          </linearGradient>
           <filter id={glowFilt} x="-15%" y="-300%" width="130%" height="700%">
             <feGaussianBlur stdDeviation="5" result="blur" />
             <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
@@ -115,12 +108,12 @@ export default function SectionConnector({
 
         {/* Glow halo */}
         {disabled ? (
-          <path d={shape.top} fill="none" stroke={`url(#${gradId})`} strokeWidth="10" opacity="0.25" />
+          <path d={shape.top} fill="none" stroke={accentColor} strokeWidth="10" opacity="0.16" />
         ) : (
           <motion.path
             d={shape.top}
             fill="none"
-            stroke={`url(#${gradId})`}
+            stroke={accentColor}
             strokeWidth={13}
             filter={`url(#${glowFilt})`}
             style={{ opacity: glowOpacity }}
@@ -129,12 +122,12 @@ export default function SectionConnector({
 
         {/* Primary wave stroke */}
         {disabled ? (
-          <path d={shape.top} fill="none" stroke={`url(#${gradId})`} strokeWidth="2.6" strokeLinecap="round" opacity="0.80" />
+          <path d={shape.top} fill="none" stroke={accentColor} strokeWidth="2.6" strokeLinecap="round" opacity="0.80" />
         ) : (
           <motion.path
             d={shape.top}
             fill="none"
-            stroke={`url(#${gradId})`}
+            stroke={accentColor}
             strokeLinecap="round"
             style={{ opacity: topOpacity, strokeWidth: topWidth }}
           />
@@ -143,12 +136,12 @@ export default function SectionConnector({
         {/* Secondary echo stroke */}
         {shape.btm && (
           disabled ? (
-            <path d={shape.btm} fill="none" stroke={`url(#${gradId})`} strokeWidth="1.2" strokeLinecap="round" opacity="0.34" />
+            <path d={shape.btm} fill="none" stroke={accentSecondary} strokeWidth="1.2" strokeLinecap="round" opacity="0.24" />
           ) : (
             <motion.path
               d={shape.btm}
               fill="none"
-              stroke={`url(#${gradId})`}
+              stroke={accentSecondary}
               strokeLinecap="round"
               style={{ opacity: btmOpacity, strokeWidth: btmWidth }}
             />

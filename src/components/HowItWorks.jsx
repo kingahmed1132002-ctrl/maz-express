@@ -26,29 +26,29 @@ const HowItWorks = ({ bgColor = '#f8fbff' }) => {
     >
       {/* Decorative Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden opacity-20">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-100 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-cyan-100 rounded-full blur-[120px]" />
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-cyan/20 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-cyan/10 rounded-full blur-[120px]" />
       </div>
 
       <div className="container mx-auto px-5 relative z-10">
         <div className="text-center mb-24">
 
           <motion.h2
-            className="text-4xl md:text-6xl font-black text-[#0f176a] mb-8 leading-tight"
+            className="text-4xl md:text-6xl font-black text-navy mb-8 leading-tight"
           >
             كيف يعمل <span className="animate-text-shimmer">ماز إكسبرس؟</span>
           </motion.h2>
-          <p className="text-gray-500 max-w-2xl mx-auto text-lg md:text-xl font-medium">
+          <p className="text-text-secondary max-w-2xl mx-auto text-lg md:text-xl font-medium">
             رحلة تسوق عالمية تبدأ بضغطة زر وتنتهي بابتسامة عند باب بيتك.
           </p>
         </div>
 
         <div className="max-w-5xl mx-auto relative">
           {/* Central Vertical Line */}
-          <div className="hidden md:block absolute left-1/2 top-[50px] bottom-[50px] w-[2px] bg-gray-100 -translate-x-1/2">
+          <div className="hidden md:block absolute left-1/2 top-[50px] bottom-[50px] w-[2px] bg-cyan/10 -translate-x-1/2">
             <motion.div
               style={{ scaleY: pathLength, originY: 0 }}
-              className="w-full h-full bg-gradient-to-b from-blue-400 via-blue-600 to-cyan-400"
+              className="w-full h-full bg-cyan"
             />
           </div>
 
@@ -73,14 +73,14 @@ const HowItWorks = ({ bgColor = '#f8fbff' }) => {
                 {/* Right Path - "تدفع بنفسك" */}
                 <path
                   d="M400 0 V40 Q400 80 480 80 H650 Q700 80 700 130 V180"
-                  stroke={hoveredBranch === 'right' ? '#3b82f6' : '#e2e8f0'}
+                  stroke={hoveredBranch === 'right' ? '#36C6F4' : '#d9eef5'}
                   strokeWidth="2" strokeDasharray="8 8"
                   className="transition-all duration-500"
                 />
                 {/* Left Path - "احنا ندفعلك" */}
                 <path
                   d="M400 0 V40 Q400 80 320 80 H150 Q100 80 100 130 V180"
-                  stroke={hoveredBranch === 'left' ? '#22d3ee' : '#e2e8f0'}
+                  stroke={hoveredBranch === 'left' ? '#36C6F4' : '#d9eef5'}
                   strokeWidth="2" strokeDasharray="8 8"
                   className="transition-all duration-500"
                 />
@@ -88,7 +88,7 @@ const HowItWorks = ({ bgColor = '#f8fbff' }) => {
                 {/* Pulse Animations */}
                 <motion.path
                   d="M400 0 V40 Q400 80 480 80 H650 Q700 80 700 130 V180"
-                  stroke="#3b82f6" strokeWidth={hoveredBranch === 'right' ? '4' : '2'}
+                  stroke="#36C6F4" strokeWidth={hoveredBranch === 'right' ? '4' : '2'}
                   strokeLinecap="round"
                   animate={{
                     pathOffset: [0, 1],
@@ -98,7 +98,7 @@ const HowItWorks = ({ bgColor = '#f8fbff' }) => {
                 />
                 <motion.path
                   d="M400 0 V40 Q400 80 320 80 H150 Q100 80 100 130 V180"
-                  stroke="#22d3ee" strokeWidth={hoveredBranch === 'left' ? '4' : '2'}
+                  stroke="#36C6F4" strokeWidth={hoveredBranch === 'left' ? '4' : '2'}
                   strokeLinecap="round"
                   animate={{
                     pathOffset: [0, 1],
@@ -154,13 +154,13 @@ const HowItWorks = ({ bgColor = '#f8fbff' }) => {
           {/* Final 0% Commission */}
           <div className="mt-24 text-center">
             <div className="inline-block relative p-1 group">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-              <div className="relative bg-white border border-blue-100 px-8 py-10 md:px-16 md:py-12 rounded-3xl shadow-xl">
-                <div className="text-5xl md:text-7xl font-black text-blue-600 mb-4 tracking-tighter">
+              <div className="absolute inset-0 bg-cyan rounded-3xl blur opacity-15 group-hover:opacity-25 transition duration-1000"></div>
+              <div className="relative bg-white border border-cyan/20 px-8 py-10 md:px-16 md:py-12 rounded-3xl shadow-xl">
+                <div className="text-5xl md:text-7xl font-black text-cyan mb-4 tracking-tighter">
                   0% <span className="text-3xl md:text-5xl">عمولة</span>
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-[#0f176a] mb-4">خدماتنا بعمولة 0%</h3>
-                <p className="text-gray-500 text-lg max-w-md mx-auto">
+                <h3 className="text-2xl md:text-3xl font-bold text-navy mb-4">خدماتنا بعمولة 0%</h3>
+                <p className="text-text-secondary text-lg max-w-md mx-auto">
                   نحن نوفر لك هذه الخدمات بدون أي عمولة إضافية. سعر المنتج كما هو في المتجر تماماً.
                 </p>
               </div>
@@ -179,32 +179,32 @@ const Step = ({ number, title, description, icon }) => (
     viewport={{ once: true, margin: "-100px" }}
     className="flex flex-col items-center text-center relative mb-24 last:mb-0 group"
   >
-    <div className="w-16 h-16 rounded-2xl bg-white shadow-lg border border-blue-50 flex items-center justify-center mb-8 z-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-cyan-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-      <span className="text-2xl font-black text-[#0f176a] relative z-10">{number}</span>
+    <div className="w-16 h-16 rounded-2xl bg-white shadow-lg border border-cyan/15 flex items-center justify-center mb-8 z-20 relative overflow-hidden">
+      <div className="absolute inset-0 bg-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+      <span className="text-2xl font-black text-navy relative z-10">{number}</span>
     </div>
-    <div className="max-w-sm bg-white p-8 rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-gray-100 transition-all duration-500 hover:border-blue-100">
+    <div className="max-w-sm bg-white p-8 rounded-3xl shadow-[0_10px_40px_rgba(11,60,109,0.05)] border border-cyan/10 transition-all duration-500 hover:border-cyan/30">
       <div className="text-5xl mb-6 mx-auto transition-transform duration-500 group-hover:scale-110">
         {icon}
       </div>
-      <h3 className="text-2xl font-bold text-[#0f176a] mb-4">{title}</h3>
-      <p className="text-gray-500 leading-relaxed font-medium">{description}</p>
+      <h3 className="text-2xl font-bold text-navy mb-4">{title}</h3>
+      <p className="text-text-secondary leading-relaxed font-medium">{description}</p>
     </div>
   </motion.div>
 );
 
 const BranchCard = ({ title, description, icon, side, label, isHovered }) => (
   <motion.div
-    className={`h-full bg-white p-10 rounded-[2.5rem] border ${isHovered ? 'border-blue-300 shadow-xl' : 'border-gray-100 shadow-md'} relative overflow-hidden transition-all duration-500`}
+    className={`h-full bg-white p-10 rounded-[2.5rem] border ${isHovered ? 'border-cyan/50 shadow-xl' : 'border-cyan/10 shadow-md'} relative overflow-hidden transition-all duration-500`}
   >
-    <div className={`absolute top-0 ${side === 'right' ? 'right-0' : 'left-0'} w-1.5 h-full bg-gradient-to-b from-blue-500 to-cyan-400 opacity-60`}></div>
-    <div className={`text-xs font-bold uppercase mb-6 inline-block px-3 py-1 rounded-full transition-colors duration-300 ${isHovered ? 'bg-blue-600 text-white' : 'bg-blue-50 text-blue-500'}`}>
+    <div className={`absolute top-0 ${side === 'right' ? 'right-0' : 'left-0'} w-1.5 h-full bg-cyan opacity-70`}></div>
+    <div className={`text-xs font-bold uppercase mb-6 inline-block px-3 py-1 rounded-full transition-colors duration-300 ${isHovered ? 'bg-cyan text-navy' : 'bg-cyan/10 text-cyan-dark'}`}>
       {label}
     </div>
     <div className="text-6xl mb-8 transform transition-transform duration-500 group-hover:scale-110">{icon}</div>
-    <h3 className="text-2xl md:text-3xl font-extrabold text-[#0f176a] mb-6">{title}</h3>
-    <p className="text-gray-500 text-lg leading-relaxed font-medium">{description}</p>
-    <div className={`mt-8 flex justify-center transition-all duration-300 ${isHovered ? 'text-blue-500 translate-y-1' : 'text-gray-200'}`}>
+    <h3 className="text-2xl md:text-3xl font-extrabold text-navy mb-6">{title}</h3>
+    <p className="text-text-secondary text-lg leading-relaxed font-medium">{description}</p>
+    <div className={`mt-8 flex justify-center transition-all duration-300 ${isHovered ? 'text-cyan translate-y-1' : 'text-cyan/25'}`}>
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M12 5v14m7-7l-7 7-7-7" /></svg>
     </div>
   </motion.div>

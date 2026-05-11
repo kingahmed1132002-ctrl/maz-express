@@ -1,4 +1,16 @@
 import React, { useState } from 'react';
+import {
+  Calculator,
+  CheckCircle2,
+  MapPin,
+  Plane,
+  Ruler,
+  Scale,
+  ShieldCheck,
+  Ship,
+  Truck,
+  Zap,
+} from 'lucide-react';
 
 const Widgets = ({ fadeInUp, bgColor = '#eef6ff' }) => {
   const [destination, setDestination] = useState('turkey');
@@ -47,78 +59,83 @@ const Widgets = ({ fadeInUp, bgColor = '#eef6ff' }) => {
       value: 'turkey',
       flag: '🇹🇷',
       label: 'تركيا',
+      hint: 'جوي أو بحري',
     },
     {
       value: 'dubai',
       flag: '🇦🇪',
       label: 'دبي',
+      hint: 'جوي فقط',
     },
   ];
 
   const shippingOptions =
     destination === 'dubai'
-      ? [['air', '✈️', 'جوي']]
+      ? [{ value: 'air', Icon: Plane, label: 'جوي', color: '#2563EB' }]
       : [
-        ['air', '✈️', 'جوي'],
-        ['sea', '🚢', 'بحري'],
+        { value: 'air', Icon: Plane, label: 'جوي', color: '#2563EB' },
+        { value: 'sea', Icon: Ship, label: 'بحري', color: '#0891B2' },
       ];
+
+  const featurePills = [
+    { Icon: Plane, label: 'جوي', color: '#2563EB' },
+    { Icon: Ship, label: 'بحري', color: '#0891B2' },
+    { Icon: ShieldCheck, label: 'آمن', color: '#16A34A' },
+    { Icon: Zap, label: 'فوري', color: '#D97706' },
+  ];
+
+  const fieldLabelClass =
+    'mb-2 flex items-center gap-2 text-[12px] font-extrabold text-navy';
 
   return (
     <section
-      className="section-padding flex items-center justify-center rtl"
+      id="tracking"
+      className="section-padding flex items-center justify-center rtl px-5"
       style={{ backgroundColor: bgColor }}
     >
+      <div className="w-full max-w-[520px] overflow-hidden rounded-[20px] border border-cyan/25 bg-white shadow-[0_24px_70px_rgba(11,60,109,0.10)]">
+        <div className="h-2 bg-cyan" />
 
-      <div className="w-full max-w-[480px] overflow-hidden rounded-[32px] border border-white/60 bg-white/70 backdrop-blur-xl shadow-[0_32px_80px_rgba(14,165,233,0.15),0_8px_32px_rgba(14,165,233,0.1)] transition-transform duration-500 hover:shadow-[0_40px_100px_rgba(14,165,233,0.2)]">
-
-        {/* Header */}
-        <div className="relative overflow-hidden bg-gradient-to-br from-[#0b2d6b] via-accent-blue to-cyan-500 px-8 pt-10 pb-8">
-
-          <div className="absolute -left-12 -top-12 h-[200px] w-[200px] rounded-full bg-gradient-to-tr from-white/0 to-white/20 blur-2xl" />
-          <div className="absolute -bottom-14 -right-8 h-[160px] w-[160px] rounded-full bg-gradient-to-br from-white/20 to-white/0 blur-xl" />
-          <div className="absolute right-20 top-3 h-20 w-20 rounded-full bg-white/10 blur-lg" />
-
-          <div className="relative z-10 mb-6 flex items-center gap-5">
-            <div className="flex h-[60px] w-[60px] flex-shrink-0 items-center justify-center rounded-2xl border border-white/30 bg-white/20 backdrop-blur-md text-[30px] shadow-lg shadow-black/10">
-              🧮
+        <div className="border-b border-cyan/15 px-7 pb-6 pt-7">
+          <div className="mb-5 flex items-center gap-4">
+            <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl border border-cyan/35 bg-cyan/10 shadow-sm">
+              <Calculator color="#36C6F4" size={28} strokeWidth={2.5} />
             </div>
-
             <div>
-              <h1 className="mb-1.5 text-[24px] font-black text-white tracking-wide">
+              <h2 className="mb-1 text-[26px] font-black leading-tight text-navy">
                 حساب التكلفة
-              </h1>
-              <p className="text-sm font-medium text-white/80">
+              </h2>
+              <p className="text-sm font-semibold leading-relaxed text-text-secondary">
                 تقدير فوري لأسعار شحنتك
               </p>
             </div>
           </div>
 
-          <div className="relative z-10 flex flex-wrap gap-2.5 mt-2">
-            {[
-              ['✈️', 'جوي'],
-              ['🚢', 'بحري'],
-              ['🛡️', 'آمن 100%'],
-              ['⚡', 'فوري'],
-            ].map(([icon, label]) => (
+          <div className="flex flex-wrap gap-2">
+            {featurePills.map(({ Icon, label, color }) => (
               <div
                 key={label}
-                className="flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-bold text-white backdrop-blur-md shadow-sm"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-cyan/20 bg-cyan/10 px-3 py-1.5 text-xs font-extrabold text-navy"
               >
-                <span>{icon}</span>
+                <span
+                  className="flex h-5 w-5 items-center justify-center rounded-md"
+                  style={{
+                    backgroundColor: `${color}18`,
+                    color,
+                  }}
+                >
+                  <Icon size={13} strokeWidth={2.5} />
+                </span>
                 {label}
               </div>
             ))}
           </div>
         </div>
 
-        {/* Body */}
-        <div className="p-7 pb-8">
-
-          {/* Destination */}
+        <div className="p-7">
           <div className="mb-5">
-
-            <div className="mb-2 flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-sky-700">
-              <span>📍</span>
+            <div className={fieldLabelClass}>
+              <MapPin color="#36C6F4" size={16} strokeWidth={2.4} />
               الوجهة
             </div>
 
@@ -132,35 +149,28 @@ const Widgets = ({ fadeInUp, bgColor = '#eef6ff' }) => {
                     key={item.value}
                     onClick={() => {
                       setDestination(item.value);
-
                       if (item.value === 'dubai') {
                         setShippingtype('air');
                       }
-
                       setCost(null);
                     }}
+                    aria-pressed={active}
                     className={`
-                      flex flex-col items-center gap-2 rounded-2xl border px-4 py-4 transition-all duration-200
+                      flex min-h-[96px] flex-col items-center justify-center gap-1 rounded-xl border px-4 py-4 text-center transition-all duration-200
                       ${active
-                        ? 'border-sky-500 bg-gradient-to-br from-sky-100 to-sky-50 shadow-lg shadow-sky-200/50'
-                        : 'border-sky-100 bg-slate-50'
+                        ? 'border-cyan bg-cyan text-navy shadow-lg shadow-cyan/25'
+                        : 'border-cyan/20 bg-white text-text-secondary hover:border-cyan/45 hover:bg-cyan/10'
                       }
                     `}
                   >
-                    <span className="text-[28px]">
+                    <span className="text-[26px] leading-none">
                       {item.flag}
                     </span>
-
-                    <span
-                      className={`
-                        text-sm font-bold
-                        ${active
-                          ? 'text-sky-600'
-                          : 'text-sky-300'
-                        }
-                      `}
-                    >
+                    <span className="text-sm font-black">
                       {item.label}
+                    </span>
+                    <span className={active ? 'text-xs font-bold text-navy/70' : 'text-xs font-bold text-text-secondary/55'}>
+                      {item.hint}
                     </span>
                   </button>
                 );
@@ -168,64 +178,57 @@ const Widgets = ({ fadeInUp, bgColor = '#eef6ff' }) => {
             </div>
           </div>
 
-          {/* Shipping Type */}
           <div className="mb-5">
-
-            <div className="mb-2 flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-sky-700">
-              <span>🚚</span>
+            <div className={fieldLabelClass}>
+              <Truck color="#2563EB" size={16} strokeWidth={2.4} />
               نوع الشحن
             </div>
 
             <div
               className={`
-                grid gap-1 rounded-2xl border border-sky-100 bg-slate-50 p-1
+                grid gap-2 rounded-xl border border-cyan/20 bg-bg-light p-1.5
                 ${shippingOptions.length === 1
                   ? 'grid-cols-1'
                   : 'grid-cols-2'
                 }
               `}
             >
-              {shippingOptions.map(
-                ([val, icon, label]) => {
-                  const active =
-                    shippingtype === val;
+              {shippingOptions.map(({ value, Icon, label, color }) => {
+                const active =
+                  shippingtype === value;
 
-                  return (
-                    <button
-                      key={val}
-                      onClick={() => {
-                        setShippingtype(val);
-                        setCost(null);
-                      }}
-                      className={`
-                        flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition-all duration-200
-                        ${active
-                          ? 'bg-gradient-to-r from-sky-500 to-cyan-600 text-white shadow-lg shadow-sky-300/40'
-                          : 'text-sky-300 hover:bg-sky-50'
-                        }
-                      `}
+                return (
+                  <button
+                    key={value}
+                    onClick={() => {
+                      setShippingtype(value);
+                      setCost(null);
+                    }}
+                    aria-pressed={active}
+                    className={`
+                      flex items-center justify-center gap-2 rounded-lg px-4 py-3 text-sm font-extrabold transition-all duration-200
+                      ${active
+                        ? 'bg-cyan text-navy shadow-md shadow-cyan/25'
+                        : 'text-text-secondary hover:bg-white hover:text-navy'
+                      }
+                    `}
+                  >
+                    <span
+                      className="flex h-7 w-7 items-center justify-center rounded-lg bg-white/70"
+                      style={{ color }}
                     >
-                      <span className="text-lg">
-                        {icon}
-                      </span>
-
-                      {label}
-                    </button>
-                  );
-                }
-              )}
+                      <Icon size={17} strokeWidth={2.5} />
+                    </span>
+                    {label}
+                  </button>
+                );
+              })}
             </div>
-
-
           </div>
 
-          <div className="mb-5 h-px bg-gradient-to-r from-transparent via-sky-200 to-transparent" />
-
-          {/* Weight */}
           <div className="mb-5">
-
-            <div className="mb-2 flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-sky-700">
-              <span>⚖️</span>
+            <div className={fieldLabelClass}>
+              <Scale color="#16A34A" size={16} strokeWidth={2.4} />
               الوزن (كيلوغرام)
             </div>
 
@@ -238,16 +241,14 @@ const Widgets = ({ fadeInUp, bgColor = '#eef6ff' }) => {
               placeholder="أدخل الوزن"
               min="0"
               step="0.1"
-              className="w-full rounded-2xl border border-sky-100 bg-slate-50 px-4 py-3 text-sm text-sky-900 outline-none transition-all focus:border-sky-400 focus:ring-4 focus:ring-sky-100"
+              className="w-full rounded-xl border border-cyan/20 bg-white px-4 py-3.5 text-base font-bold text-navy outline-none transition-all placeholder:text-text-secondary/45 focus:border-cyan focus:bg-white focus:ring-4 focus:ring-cyan/15"
             />
           </div>
 
-          {/* Dimensions */}
           {showDims && (
             <div className="mb-5">
-
-              <div className="mb-2 flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-sky-700">
-                <span>📐</span>
+              <div className={fieldLabelClass}>
+                <Ruler color="#D97706" size={16} strokeWidth={2.4} />
                 الأبعاد (سم)
               </div>
 
@@ -283,11 +284,12 @@ const Widgets = ({ fadeInUp, bgColor = '#eef6ff' }) => {
                         onChange={(e) =>
                           setter(e.target.value)
                         }
+                        placeholder="0"
                         min="0"
-                        className="w-full rounded-2xl border border-sky-100 bg-slate-50 px-2 pb-6 pt-3 text-center text-sm text-sky-900 outline-none transition-all focus:border-sky-400 focus:ring-4 focus:ring-sky-100"
+                        className="w-full rounded-xl border border-cyan/20 bg-white px-2 pb-6 pt-3 text-center text-sm font-bold text-navy outline-none transition-all placeholder:text-text-secondary/35 focus:border-cyan focus:ring-4 focus:ring-cyan/15"
                       />
 
-                      <div className="pointer-events-none absolute bottom-2 left-0 right-0 text-center text-[10px] font-bold text-sky-300">
+                      <div className="pointer-events-none absolute bottom-2 left-0 right-0 text-center text-[10px] font-extrabold text-text-secondary/60">
                         {label}
                       </div>
                     </div>
@@ -297,31 +299,31 @@ const Widgets = ({ fadeInUp, bgColor = '#eef6ff' }) => {
             </div>
           )}
 
-          {/* Calculate Button */}
           <button
             onClick={calculateCost}
-            className="mt-2 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-sky-500 to-cyan-600 px-5 py-4 text-base font-extrabold text-white shadow-xl shadow-sky-300/40 transition-all duration-200 hover:scale-[1.01] active:scale-[0.99]"
+            className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-cyan px-5 py-4 text-base font-black text-navy shadow-lg shadow-cyan/25 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-cyan/30 active:translate-y-0"
           >
-            <span className="text-xl">🧮</span>
+            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-white/55 text-navy">
+              <Calculator size={18} strokeWidth={2.6} />
+            </span>
             احسب التكلفة
           </button>
 
-          {/* Result */}
           {cost && (
-            <div className="mt-5 flex items-center gap-4 rounded-[20px] border border-sky-300 bg-gradient-to-br from-sky-50 to-cyan-50 px-5 py-5 shadow-lg shadow-sky-100/60">
+            <div className="mt-5 flex items-center gap-4 rounded-xl border border-cyan/35 bg-cyan/10 px-5 py-5 shadow-lg shadow-cyan/10">
 
-              <div className="flex h-[54px] w-[54px] flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-500 to-cyan-600 text-[26px] text-white shadow-lg shadow-sky-300/40">
-                ✅
+              <div className="flex h-[52px] w-[52px] flex-shrink-0 items-center justify-center rounded-xl bg-white text-[#16A34A] shadow-md shadow-cyan/20">
+                <CheckCircle2 size={28} strokeWidth={2.4} />
               </div>
 
               <div>
-                <div className="mb-1 text-[11px] font-bold tracking-wider text-sky-700">
+                <div className="mb-1 text-[12px] font-extrabold text-navy">
                   تكلفة الشحن التقديرية
                 </div>
 
-                <div className="text-[28px] font-black leading-none text-sky-950">
+                <div className="text-[30px] font-black leading-none text-navy">
                   {cost}{' '}
-                  <span className="text-sm font-semibold text-sky-700">
+                  <span className="text-sm font-bold text-text-secondary">
                     دينار ليبي
                   </span>
                 </div>

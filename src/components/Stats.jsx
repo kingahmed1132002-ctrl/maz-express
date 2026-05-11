@@ -14,10 +14,8 @@ const Stats = ({ fadeInUp, bgColor = '#f0f8fc' }) => (
   >
     {/* Brand glow orbs */}
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      <div className="absolute -top-24 -right-24 w-80 h-80 rounded-full opacity-30"
-           style={{ background: 'radial-gradient(circle, #2BB7DA 0%, transparent 70%)' }} />
-      <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full opacity-20"
-           style={{ background: 'radial-gradient(circle, #0B3C6D 0%, transparent 70%)' }} />
+      <div className="absolute -top-24 -right-24 w-80 h-80 rounded-full opacity-30 bg-cyan blur-3xl" />
+      <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full opacity-20 bg-cyan blur-3xl" />
     </div>
 
     <div className="container mx-auto px-5 relative z-10 text-center">
@@ -26,7 +24,7 @@ const Stats = ({ fadeInUp, bgColor = '#f0f8fc' }) => (
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         className="inline-block px-4 py-1.5 rounded-full text-sm font-bold tracking-wide mb-5"
-        style={{ background: 'rgba(43,183,218,0.1)', color: '#0B3C6D', border: '1px solid rgba(43,183,218,0.2)' }}
+        style={{ background: 'rgba(54,198,244,0.1)', color: '#0B3C6D', border: '1px solid rgba(54,198,244,0.2)' }}
       >
         أرقامنا تتحدث
       </motion.div>
@@ -37,7 +35,7 @@ const Stats = ({ fadeInUp, bgColor = '#f0f8fc' }) => (
         {...fadeInUp}
       >
         ثقة تُبنى على{' '}
-        <span style={{ color: '#2BB7DA' }}>الأرقام الحقيقية</span>
+        <span style={{ color: '#36C6F4' }}>الأرقام الحقيقية</span>
       </motion.h2>
 
       <motion.p
@@ -55,17 +53,17 @@ const Stats = ({ fadeInUp, bgColor = '#f0f8fc' }) => (
             key={i}
             className="rounded-2xl p-8 bg-white text-center"
             style={{
-              border: '1px solid rgba(43,183,218,0.15)',
+              border: '1px solid rgba(54,198,244,0.15)',
               boxShadow: '0 4px 24px rgba(11,60,109,0.06)',
             }}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.15, duration: 0.6 }}
-            whileHover={{ y: -4, boxShadow: '0 16px 40px rgba(43,183,218,0.15)', borderColor: 'rgba(43,183,218,0.35)' }}
+            whileHover={{ y: -4, boxShadow: '0 16px 40px rgba(54,198,244,0.15)', borderColor: 'rgba(54,198,244,0.35)' }}
           >
             <div className="text-4xl mb-4">{stat.icon}</div>
-            <div className="text-5xl font-black mb-2" style={{ color: '#2BB7DA' }}>
+            <div className="text-5xl font-black mb-2" style={{ color: '#36C6F4' }}>
               {stat.val}
             </div>
             <p className="font-semibold" style={{ color: '#4b6a8a' }}>{stat.label}</p>

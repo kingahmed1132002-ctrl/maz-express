@@ -5,7 +5,7 @@ import { ShieldCheck } from 'lucide-react';
 const TrustSection = ({ fadeInUp }) => {
   return (
     <section className="section-padding relative overflow-hidden bg-white">
-      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-accent-blue/5 rounded-full blur-[100px] -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-cyan/5 rounded-full blur-[100px] -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
       <div className="container mx-auto px-5 relative z-10">
         <motion.div
@@ -14,19 +14,19 @@ const TrustSection = ({ fadeInUp }) => {
         >
           {/* CONTENT BLOCK */}
           <div className="w-full md:w-1/2 text-right order-1">
-            <div className="w-16 h-16 bg-accent-blue/10 rounded-2xl flex items-center justify-center mb-6 ml-auto border border-accent-blue/10">
-              <ShieldCheck className="text-accent-blue" size={32} />
+            <div className="w-16 h-16 bg-cyan/10 rounded-2xl flex items-center justify-center mb-6 ml-auto border border-cyan/10">
+              <ShieldCheck className="text-cyan" size={32} />
             </div>
 
-            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">
-              عناية بلا <span className="bg-gradient-to-l from-accent-blue to-cyan-500 bg-clip-text text-transparent">استثناءات</span>
+            <h2 className="text-3xl md:text-5xl font-black text-navy mb-6 leading-tight">
+              عناية بلا <span className="text-cyan">استثناءات</span>
             </h2>
 
-            <p className="text-slate-500 leading-relaxed text-lg mb-8 max-w-xl ml-auto">
+            <p className="text-text-secondary leading-relaxed text-lg mb-8 max-w-xl ml-auto">
               نتعامل مع كل شحنة بعناية فائقة، لضمان وصول بضائعك بأمان وموثوقية عالية من إسطنبول إلى باب منزلك. راحة البال مضمونة مع كل خطوة.
             </p>
 
-            <a href="#contact" className="inline-flex items-center gap-3 bg-gradient-to-r from-accent-blue to-cyan-600 text-white px-8 py-4 rounded-xl font-bold shadow-lg shadow-accent-blue/20 hover:shadow-xl hover:shadow-accent-blue/30 transition-all duration-300 hover:-translate-y-1">
+            <a href="#contact" className="inline-flex items-center gap-3 bg-cyan text-navy px-8 py-4 rounded-xl font-bold shadow-lg shadow-cyan/20 hover:bg-cyan hover:shadow-xl hover:shadow-cyan/30 transition-all duration-300 hover:-translate-y-1">
               تواصل معنا اليوم
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="rotate-180">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -38,7 +38,7 @@ const TrustSection = ({ fadeInUp }) => {
           {/* GIF BLOCK */}
           <div className="w-full md:w-1/2 flex justify-center md:justify-end order-2">
             <motion.div
-              className="relative border-2 border-accent-blue/30 overflow-hidden bg-accent-blue/5 backdrop-blur-sm shadow-2xl shadow-accent-blue/10 w-full max-w-md aspect-square flex items-center justify-center"
+              className="relative border-2 border-cyan/30 overflow-hidden bg-cyan/5 backdrop-blur-sm shadow-2xl shadow-cyan/10 w-full max-w-md aspect-square flex items-center justify-center"
               animate={{
                 borderRadius: [
                   "60% 40% 30% 70% / 60% 30% 70% 40%",
@@ -83,7 +83,7 @@ const TrustSection = ({ fadeInUp }) => {
               
               {/* Animated Glow Overlay */}
               <motion.div 
-                className="absolute inset-0 bg-gradient-to-br from-accent-blue/20 to-transparent pointer-events-none"
+                className="absolute inset-0 bg-cyan/10 pointer-events-none"
                 animate={{ opacity: [0.3, 0.6, 0.3] }}
                 transition={{ duration: 4, repeat: Infinity }}
               />

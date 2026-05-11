@@ -11,13 +11,13 @@ export default {
         navy:           '#0B3C6D',   // logo dark navy
         'navy-dark':    '#072848',   // deeper navy
         'navy-light':   '#1a5a9a',
-        cyan:           '#2BB7DA',   // logo cyan
-        'cyan-dark':    '#1a9abf',
-        'cyan-light':   '#6dd5ed',
+        cyan:           '#36C6F4',   // logo cyan sampled from logo.png
+        'cyan-dark':    '#36C6F4',
+        'cyan-light':   '#36C6F4',
         /* ── Aliases used across codebase ── */
-        accent:         '#2BB7DA',
-        'accent-blue':  '#0B3C6D',
-        'accent-dark':  '#1a9abf',
+        accent:         '#36C6F4',
+        'accent-blue':  '#36C6F4',
+        'accent-dark':  '#36C6F4',
         primary:        '#0B3C6D',
         'text-primary': '#0B3C6D',
         'text-secondary':'#4b6a8a',
