@@ -4,9 +4,9 @@ import { motion } from 'framer-motion';
 const Services = ({ fadeInUp, bgColor = '#ffffff' }) => {
   const services = [
     { image: '/airplane.gif', title: 'الشحن الجوي والبحري', desc: 'شحن سريع وموثوق من تركيا ودبي مباشرة إلى ليبيا.' }, // تم تغيير الإمارات إلى دبي
-    { image: '/warehouse.gif', title: 'التخزين الآمن', desc: 'خدمات تخزين وتجميع محترفة في تركيا.' }, // تم تغيير إسطنبول إلى تركيا
+    { image: '/warehouse.gif', title: 'التخزين الآمن', desc: 'خدمات تخزين وتجميع محترفة في تركيا ودبي.' },
     { image: '/delivery.gif', title: 'اللوجستيات الداخلية', desc: 'خدمات شحن وتوصيل شاملة في جميع أنحاء ليبيا.' },
-    { image: '/card.gif', title: 'التسوق والدفع', desc: 'نساعدك في الشراء من متاجر تركية ونتولى الدفع نيابةً عنك.' }
+    { image: '/card.gif', title: 'التسوق والدفع', desc: 'نساعدك في الشراء من متاجر عالمية ونتولى الدفع نيابةً عنك.' }
   ];
   return (
     <section id="services" className="section-padding relative overflow-hidden" style={{ backgroundColor: bgColor }}>

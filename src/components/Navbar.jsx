@@ -30,8 +30,8 @@ const Navbar = () => {
       >
         <motion.div
           animate={{
-            maxWidth: scrolled ? '900px' : '1150px',
-            height: scrolled ? '64px' : '68px',
+            maxWidth: scrolled ? '1000px' : '1250px',
+            height: scrolled ? '80px' : '96px',
             borderRadius: scrolled ? '50px' : '0px'
           }}
           transition={{ duration: 0.5, ease: "easeOut" }}
@@ -50,7 +50,7 @@ const Navbar = () => {
             transition={{ type: "spring", stiffness: 400, damping: 14 }}
           >
             <MazLogo
-              size={scrolled ? 36 : 44}
+              size={scrolled ? 48 : 62}
               animate={false}
               className="transition-all duration-400"
             />
@@ -65,8 +65,8 @@ const Navbar = () => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`relative no-underline text-sm font-semibold opacity-90 transition-all duration-300 ease-out hover:opacity-100 group ${
-                  scrolled ? 'text-navy hover:text-cyan' : 'text-white hover:text-cyan'
+                className={`relative no-underline text-base font-bold opacity-90 transition-all duration-300 ease-out hover:opacity-100 group ${
+                  scrolled ? 'text-navy hover:text-cyan' : 'text-navy/80 hover:text-cyan'
                 }`}
               >
                 {item.text}
@@ -82,10 +82,10 @@ const Navbar = () => {
               whileTap={{ scale: 0.95 }}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className={`md:hidden p-2 rounded-xl transition-colors duration-200 ${
-                scrolled ? 'bg-cyan/10 text-navy hover:bg-cyan/20' : 'bg-white/15 text-white hover:bg-white/25'
+                scrolled ? 'bg-cyan/10 text-navy hover:bg-cyan/20' : 'bg-navy/5 text-navy hover:bg-navy/10'
               }`}
             >
-              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </motion.button>
 
             {/* CTA Button */}
@@ -101,10 +101,10 @@ const Navbar = () => {
                 boxShadow: "0 20px 40px -12px rgba(54, 198, 244, 0.4)"
               }}
               whileTap={{ scale: 0.95 }}
-              className="hidden md:flex bg-cyan text-navy px-6 py-3 rounded-xl text-sm font-bold no-underline items-center gap-3 shadow-lg shadow-cyan/25 transition-all duration-300 hover:bg-cyan hover:shadow-xl hover:shadow-cyan/30"
+              className="hidden md:flex bg-cyan text-navy px-8 py-4 rounded-xl text-base font-bold no-underline items-center gap-3 shadow-lg shadow-cyan/25 transition-all duration-300 hover:bg-cyan hover:shadow-xl hover:shadow-cyan/30"
             >
               <span>بوابة العملاء</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="19" y1="12" x2="5" y2="12"></line>
                 <polyline points="12 19 5 12 12 5"></polyline>
               </svg>

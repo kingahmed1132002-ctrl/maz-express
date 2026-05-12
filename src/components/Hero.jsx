@@ -1,235 +1,153 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import MazLogo from './MazLogo';
 
 const shippingModes = [
-  { text: 'جوي',  color: '#2BB7DA' },
-  { text: 'بحري', color: '#7DD3F7' },
+  { text: 'جوي',  color: '#36C6F4' },
+  { text: 'بحري', color: '#2BB7DA' },
+  { text: 'بري',  color: '#0B3C6D' },
+];
+
+const heroImages = [
+  "/WhatsApp Image 2026-05-11 at 12.22.12.jpeg",
+  "/WhatsApp Image 2026-05-11 at 12.22.11.jpeg",
+  "/WhatsApp Image 2026-05-11 at 12.22.08.jpeg",
+  "/WhatsApp Image 2026-05-11 at 12.22.09.jpeg",
 ];
 
 export default function Hero() {
   const [modeIndex, setModeIndex] = useState(0);
+  const [imageIndex, setImageIndex] = useState(0);
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    const modeTimer = setInterval(() => {
       setModeIndex((prev) => (prev + 1) % shippingModes.length);
-    }, 2200);
-    return () => clearInterval(timer);
+    }, 2500);
+    
+    const imageTimer = setInterval(() => {
+      setImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+
+    return () => {
+      clearInterval(modeTimer);
+      clearInterval(imageTimer);
+    };
   }, []);
 
   const current = shippingModes[modeIndex];
 
   return (
-    <section
-      id="hero-section"
-      style={{
-        position: 'relative',
-        width: '100%',
-        height: '120vh',
-        minHeight: '750px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        overflow: 'hidden',
-        paddingBottom: '6vh',
-      }}
-      dir="rtl"
-    >
-      {/* ── Background image ── */}
-      <img
-        src="/hero.png"
-        alt=""
-        aria-hidden="true"
-        style={{
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          objectPosition: 'center',
-          zIndex: 0,
-          display: 'block',
-        }}
-      />
+    <section className="relative overflow-hidden border-b border-slate-50 bg-white min-h-[100vh] lg:min-h-[110vh] flex items-center pt-32 pb-40" dir="rtl">
+      {/* Animation Styles */}
+      <style>{`
+        @keyframes slideUpFade {
+          from { opacity: 0; transform: translateY(40px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes scaleDraft {
+          from { opacity: 0; transform: scale(0.98); }
+          to { opacity: 1; transform: scale(1); }
+        }
+        .animate-hero-text {
+          opacity: 0;
+          animation: slideUpFade 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .animate-hero-visual {
+          opacity: 0;
+          animation: scaleDraft 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .architecture-grid {
+          background-image: 
+            linear-gradient(to right, rgba(11, 60, 109, 0.05) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(11, 60, 109, 0.05) 1px, transparent 1px);
+          background-size: 40px 40px;
+        }
+      `}</style>
 
-      {/* ── Dark gradient overlay ── */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background:
-            'linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.70) 100%)',
-          zIndex: 1,
-        }}
-      />
-
-      {/* ── Centered content ── */}
-      <div
-        style={{
-          position: 'relative',
-          zIndex: 2,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          textAlign: 'center',
-          padding: '0 24px',
-          maxWidth: '800px',
-          width: '100%',
-        }}
-      >
-        {/* Logo */}
-        <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          style={{ marginBottom: 32 }}
-        >
-          <MazLogo size={80} />
-        </motion.div>
-
-        {/* ── Main tagline ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          style={{ marginBottom: 16 }}
-        >
-          <h1
-            style={{
-              fontFamily: "'Tajawal', sans-serif",
-              fontSize: 'clamp(2rem, 5vw, 3.8rem)',
-              fontWeight: 800,
-              color: '#ffffff',
-              lineHeight: 1.25,
-              margin: 0,
-            }}
-          >
-            {'نشحن '}
-            {/* Animated flipping word */}
-            <span
-              style={{
-                display: 'inline-block',
-                minWidth: '3ch',
-                perspective: '600px',
-              }}
-            >
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={modeIndex}
-                  initial={{ rotateX: -90, opacity: 0 }}
-                  animate={{ rotateX: 0,   opacity: 1 }}
-                  exit={{    rotateX:  90, opacity: 0 }}
-                  transition={{ duration: 0.4, ease: 'easeInOut' }}
-                  style={{
-                    display: 'inline-block',
-                    color: current.color,
-                    textShadow: `0 0 28px ${current.color}bb`,
-                    transformOrigin: 'center center',
-                  }}
-                >
-                  {current.text}
-                </motion.span>
-              </AnimatePresence>
-            </span>
-            {' وبري'}
-          </h1>
-        </motion.div>
-
-        {/* Sub-headline */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          style={{
-            fontFamily: "'Tajawal', sans-serif",
-            fontSize: 'clamp(1rem, 2vw, 1.3rem)',
-            color: 'rgba(255,255,255,0.88)',
-            margin: '0 0 10px',
-            fontWeight: 600,
-            letterSpacing: '0.01em',
-          }}
-        >
-          شريكك الموثوق في الشحن الدولي
-        </motion.p>
-
-        {/* Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.65 }}
-          style={{
-            fontFamily: "'Tajawal', sans-serif",
-            fontSize: 'clamp(0.9rem, 1.8vw, 1.1rem)',
-            color: 'rgba(255,255,255,0.65)',
-            margin: '0 0 40px',
-            maxWidth: 520,
-            lineHeight: 1.8,
-          }}
-        >
-          نوفر حلول شحن متكاملة براً وبحراً وجواً — بدقة في المواعيد، وأمان في التوصيل، واحترافية في كل خطوة.
-        </motion.p>
-
-
-        {/* Dots */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.1 }}
-          style={{ display: 'flex', gap: 8, alignItems: 'center', marginTop: 52 }}
-        >
-          {[0, 1, 2].map((i) => (
-            <span
-              key={i}
-              style={{
-                display: 'block',
-                width:  i === 1 ? 28 : 8,
-                height: 8,
-                borderRadius: 999,
-                background: i === 1 ? '#2BB7DA' : 'rgba(255,255,255,0.35)',
-                transition: 'all 0.3s',
-              }}
-            />
-          ))}
-        </motion.div>
+      {/* Technical Background Grid */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute inset-0 opacity-10 architecture-grid" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-slate-100 hidden lg:block" />
       </div>
 
-      {/* ── Scroll cue ── */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4 }}
-        style={{
-          position: 'absolute',
-          bottom: 32,
-          left: '50%',
-          transform: 'translateX(-50%)',
-          zIndex: 2,
-        }}
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}
-          style={{
-            width: 26,
-            height: 42,
-            borderRadius: 999,
-            border: '2px solid rgba(255,255,255,0.4)',
-            display: 'flex',
-            alignItems: 'flex-start',
-            justifyContent: 'center',
-            paddingTop: 6,
-          }}
-        >
-          <div
-            style={{
-              width: 5,
-              height: 10,
-              borderRadius: 999,
-              background: 'rgba(255,255,255,0.7)',
-            }}
-          />
-        </motion.div>
-      </motion.div>
+      <div className="relative mx-auto max-w-[1600px] w-full">
+        <div className="grid min-h-[auto] items-stretch gap-0 lg:min-h-[70vh] lg:grid-cols-12">
+          
+          {/* Content Column (Arabic: Right Side) */}
+          <div className="flex flex-col justify-center px-5 py-12 sm:px-8 sm:py-16 lg:col-span-6 lg:px-12 lg:py-20 xl:px-20 2xl:px-24 lg:order-2 border-l border-slate-100">
+            <div className="relative text-right">
+              {/* Title */}
+              <h1 className="mb-8 break-words text-[clamp(2.8rem,10vw,4.2rem)] font-black uppercase tracking-tighter leading-[0.95] animate-hero-text [text-wrap:balance] sm:mb-10 lg:text-[clamp(3.5rem,5.5vw,5.2rem)] 2xl:text-[clamp(4.5rem,5vw,6.5rem)] text-[#0B3C6D]" style={{ animationDelay: '0.2s' }}>
+                نشحن <br />
+                <span className="relative inline-block min-w-[3.5ch]">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={modeIndex}
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: -20, opacity: 0 }}
+                      transition={{ duration: 0.4 }}
+                      style={{ color: current.color, display: 'inline-block' }}
+                    >
+                      {current.text}
+                    </motion.span>
+                  </AnimatePresence>
+                </span>
+                <span className="text-[#0B3C6D]"> وبري</span>
+              </h1>
+
+              {/* Description */}
+              <p className="mb-10 max-w-2xl text-base font-light leading-relaxed text-slate-500 animate-hero-text sm:mb-12 sm:text-lg" style={{ animationDelay: '0.3s' }}>
+                نوفر حلول شحن متكاملة براً وبحراً وجواً — بدقة في المواعيد، وأمان في التوصيل، واحترافية في كل خطوة. شريكك الموثوق في الشحن الدولي من وإلى جميع أنحاء العالم.
+              </p>
+            </div>
+          </div>
+
+          {/* Visual Column (Arabic: Left Side) */}
+          <div className="relative flex items-center justify-center bg-slate-50 px-5 pb-20 pt-6 animate-hero-visual sm:px-8 sm:pb-24 sm:pt-8 lg:col-span-6 lg:p-14 xl:p-16 lg:order-1" style={{ animationDelay: '0.5s' }}>
+            <div className="group relative w-full max-w-xl aspect-[5/4] sm:max-w-2xl sm:aspect-square lg:aspect-[4/5]">
+              
+              {/* Image Framing Accents */}
+              <div className="pointer-events-none absolute -inset-3 border border-slate-200 transition-all duration-1000 group-hover:inset-0 sm:-inset-4" />
+              <div className="absolute top-0 z-20 h-10 w-10 border-t-2 border-r-2 border-[#36C6F4] right-0" />
+              
+              <div className="absolute inset-0 overflow-hidden rounded-sm">
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={imageIndex}
+                    src={heroImages[imageIndex]}
+                    alt="Maz Express Logistics"
+                    initial={{ opacity: 0, scale: 1.1 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 1.05 }}
+                    transition={{ duration: 1.2, ease: "easeInOut" }}
+                    className="absolute inset-0 h-full w-full object-cover grayscale-[0.2] contrast-[1.02] hover:grayscale-0 transition-all duration-1000"
+                  />
+                </AnimatePresence>
+              </div>
+
+              {/* Floating Panel */}
+              <div className="absolute bottom-4 left-4 right-4 z-30 border border-slate-100 bg-white p-5 shadow-2xl shadow-slate-900/5 transition-all duration-700 hover:-translate-y-2 sm:left-6 sm:right-6 sm:bottom-6 sm:p-6 lg:w-[75%] lg:p-8 lg:-right-10 lg:left-auto text-right">
+                <span className="mb-3 block font-mono text-[0.58rem] uppercase tracking-[0.28em] text-[#36C6F4] sm:mb-4 sm:text-[0.65rem] sm:tracking-[0.4em]">
+                  تتبع شحنتك
+                </span>
+                <h2 className="mb-3 text-xl font-black uppercase tracking-tight text-[#0B3C6D] sm:mb-4 sm:text-2xl [text-wrap:balance]">
+                  دعم فني واحترافي على مدار الساعة
+                </h2>
+                <p className="text-sm font-light leading-relaxed text-slate-500">
+                  فريقنا المتخصص يضمن لك راحة البال من خلال متابعة دقيقة لكل تفاصيل عملية الشحن منذ الاستلام وحتى التوصيل.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      {/* Section Footer Overlay */}
+      <div className="absolute inset-x-0 bottom-0 h-48 pointer-events-none select-none">
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-slate-200 to-transparent opacity-60" />
+      </div>
     </section>
   );
 }

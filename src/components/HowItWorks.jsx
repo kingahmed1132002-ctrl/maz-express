@@ -20,7 +20,7 @@ const HowItWorks = ({ bgColor = '#f8fbff' }) => {
     <section
       ref={containerRef}
       id="how-it-works"
-      className="py-32 relative overflow-hidden"
+      className="py-20 relative overflow-hidden"
       dir="rtl"
       style={{ backgroundColor: bgColor }}
     >
@@ -31,8 +31,7 @@ const HowItWorks = ({ bgColor = '#f8fbff' }) => {
       </div>
 
       <div className="container mx-auto px-5 relative z-10">
-        <div className="text-center mb-24">
-
+        <div className="text-center mb-16">
           <motion.h2
             className="text-4xl md:text-6xl font-black text-navy mb-8 leading-tight"
           >
@@ -62,12 +61,12 @@ const HowItWorks = ({ bgColor = '#f8fbff' }) => {
           <Step
             number="02"
             title="اختيار المنتج"
-            description="تصفح متاجرك العالمية المفضلة واختر المنتجات التي ترغب في اقتنائها."
+            description="تصفح متاجرك العالمية المفضلة واختر المنتجات التي ترغب in اقتنائها."
             icon="📱"
           />
 
           {/* Branching Section */}
-          <div className="relative py-16 md:py-32">
+          <div className="relative py-12 md:py-20">
             <div className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none">
               <svg width="100%" height="100%" viewBox="0 0 800 400" fill="none" preserveAspectRatio="none">
                 {/* Right Path - "تدفع بنفسك" */}
@@ -132,9 +131,6 @@ const HowItWorks = ({ bgColor = '#f8fbff' }) => {
                 />
               </div>
             </div>
-
-
-
           </div>
 
           <Step
@@ -152,7 +148,7 @@ const HowItWorks = ({ bgColor = '#f8fbff' }) => {
           />
 
           {/* Final 0% Commission */}
-          <div className="mt-24 text-center">
+          <div className="mt-16 text-center">
             <div className="inline-block relative p-1 group">
               <div className="absolute inset-0 bg-cyan rounded-3xl blur opacity-15 group-hover:opacity-25 transition duration-1000"></div>
               <div className="relative bg-white border border-cyan/20 px-8 py-10 md:px-16 md:py-12 rounded-3xl shadow-xl">
@@ -177,7 +173,7 @@ const Step = ({ number, title, description, icon }) => (
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: "-100px" }}
-    className="flex flex-col items-center text-center relative mb-24 last:mb-0 group"
+    className="flex flex-col items-center text-center relative mb-16 last:mb-0 group"
   >
     <div className="w-16 h-16 rounded-2xl bg-white shadow-lg border border-cyan/15 flex items-center justify-center mb-8 z-20 relative overflow-hidden">
       <div className="absolute inset-0 bg-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
