@@ -1,8 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ShieldCheck } from 'lucide-react';
+import { useLang } from '../LanguageContext';
 
 const TrustSection = ({ fadeInUp }) => {
+  const { t, lang } = useLang();
+
   return (
     <section className="section-padding relative overflow-hidden bg-white">
       <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-cyan/5 rounded-full blur-[100px] -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
@@ -13,22 +16,22 @@ const TrustSection = ({ fadeInUp }) => {
           {...fadeInUp}
         >
           {/* CONTENT BLOCK */}
-          <div className="w-full md:w-1/2 text-right order-1">
-            <div className="w-16 h-16 bg-cyan/10 rounded-2xl flex items-center justify-center mb-6 ml-auto border border-cyan/10">
+          <div className={`w-full md:w-1/2 ${lang === 'ar' ? 'text-right' : 'text-left'} order-1 ${lang === 'ar' ? '' : 'md:order-2'}`}>
+            <div className={`w-16 h-16 bg-cyan/10 rounded-2xl flex items-center justify-center mb-6 border border-cyan/10 ${lang === 'ar' ? 'ml-auto' : 'mr-auto'}`}>
               <ShieldCheck className="text-cyan" size={32} />
             </div>
 
-            <h2 className="text-3xl md:text-5xl font-black text-navy mb-6 leading-tight">
-              عناية بلا <span className="text-cyan">استثناءات</span>
+            <h2 className="text-3xl md:text-5xl font-black text-navy mb-6 leading-[1.6]">
+              {t.trust_title_1} <span className="text-cyan">{t.trust_title_2}</span>
             </h2>
 
-            <p className="text-text-secondary leading-relaxed text-lg mb-8 max-w-xl ml-auto">
-              نتعامل مع كل شحنة بعناية فائقة، لضمان وصول بضائعك بأمان وموثوقية عالية من إسطنبول إلى باب منزلك. راحة البال مضمونة مع كل خطوة.
+            <p className={`text-text-secondary leading-relaxed text-lg mb-8 max-w-xl ${lang === 'ar' ? 'ml-auto' : 'mr-auto'}`}>
+              {t.trust_desc}
             </p>
 
             <a href="#contact" className="inline-flex items-center gap-3 bg-cyan text-navy px-8 py-4 rounded-xl font-bold shadow-lg shadow-cyan/20 hover:bg-cyan hover:shadow-xl hover:shadow-cyan/30 transition-all duration-300 hover:-translate-y-1">
-              تواصل معنا اليوم
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="rotate-180">
+              {t.trust_cta}
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={lang === 'ar' ? 'rotate-180' : ''}>
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
@@ -36,7 +39,7 @@ const TrustSection = ({ fadeInUp }) => {
           </div>
 
           {/* GIF BLOCK */}
-          <div className="w-full md:w-1/2 flex justify-center md:justify-end order-2">
+          <div className={`w-full md:w-1/2 flex justify-center ${lang === 'ar' ? 'md:justify-end' : 'md:justify-start'} order-2 ${lang === 'ar' ? '' : 'md:order-1'}`}>
             <motion.div
               className="relative border-2 border-cyan/30 overflow-hidden bg-cyan/5 backdrop-blur-sm shadow-2xl shadow-cyan/10 w-full max-w-md aspect-square flex items-center justify-center"
               animate={{

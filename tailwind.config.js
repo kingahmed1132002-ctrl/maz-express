@@ -25,7 +25,7 @@ export default {
         'bg-white':     '#ffffff',
       },
       fontFamily: {
-        sans:   ['Tajawal', 'Inter', 'sans-serif'],
+        sans:   ['Cairo', 'Inter', 'sans-serif'],
         latin:  ['Inter', 'sans-serif'],
         outfit: ['Outfit', 'sans-serif'],
       },

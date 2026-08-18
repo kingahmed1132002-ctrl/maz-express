@@ -1,12 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLang } from '../LanguageContext';
 
 const Services = ({ fadeInUp, bgColor = '#ffffff' }) => {
+  const { t } = useLang();
+
   const services = [
-    { image: '/airplane.gif', title: 'الشحن الجوي والبحري', desc: 'شحن سريع وموثوق من تركيا ودبي مباشرة إلى ليبيا.' }, // تم تغيير الإمارات إلى دبي
-    { image: '/warehouse.gif', title: 'التخزين الآمن', desc: 'خدمات تخزين وتجميع محترفة في تركيا ودبي.' },
-    { image: '/delivery.gif', title: 'اللوجستيات الداخلية', desc: 'خدمات شحن وتوصيل شاملة في جميع أنحاء ليبيا.' },
-    { image: '/card.gif', title: 'التسوق والدفع', desc: 'نساعدك في الشراء من متاجر عالمية ونتولى الدفع نيابةً عنك.' }
+    { image: '/airplane.gif', title: t.service_1_title, desc: t.service_1_desc },
+    { image: '/warehouse.gif', title: t.service_2_title, desc: t.service_2_desc },
+    { image: '/delivery.gif', title: t.service_3_title, desc: t.service_3_desc },
+    { image: '/card.gif', title: t.service_4_title, desc: t.service_4_desc }
   ];
   return (
     <section id="services" className="section-padding relative overflow-hidden" style={{ backgroundColor: bgColor }}>
@@ -16,7 +19,7 @@ const Services = ({ fadeInUp, bgColor = '#ffffff' }) => {
       <div className="container mx-auto px-5 relative z-10">
         <div className="text-center mb-16">
           <motion.h2 className="text-4xl md:text-5xl font-black text-navy" {...fadeInUp}>
-            خدماتنا <span className="text-cyan">المميزة</span>
+            {t.services_title} <span className="text-cyan">{t.services_title_accent}</span>
           </motion.h2>
         </div>
 

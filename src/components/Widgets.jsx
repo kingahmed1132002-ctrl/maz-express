@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLang } from '../LanguageContext';
 import {
   Calculator,
   CheckCircle2,
@@ -10,13 +11,12 @@ import {
   ShieldCheck,
   Ship,
   Truck,
-  Zap,
   Timer,
-  Globe,
-  Headphones
+  Globe
 } from 'lucide-react';
 
 const Widgets = ({ fadeInUp, bgColor = '#eef6ff' }) => {
+  const { t, lang } = useLang();
   const [destination, setDestination] = useState('turkey');
   const [shippingtype, setShippingtype] = useState('air');
 
@@ -52,35 +52,35 @@ const Widgets = ({ fadeInUp, bgColor = '#eef6ff' }) => {
   };
 
   const destinations = [
-    { value: 'turkey', flag: '🇹🇷', label: 'تركيا', hint: 'جوي أو بحري' },
-    { value: 'dubai', flag: '🇦🇪', label: 'دبي', hint: 'جوي فقط' },
+    { value: 'turkey', flag: '🇹🇷', label: t.calc_turkey, hint: t.calc_turkey_hint },
+    { value: 'dubai', flag: '🇦🇪', label: t.calc_dubai, hint: t.calc_dubai_hint },
   ];
 
   const shippingOptions =
     destination === 'dubai'
-      ? [{ value: 'air', Icon: Plane, label: 'جوي', color: '#2563EB' }]
+      ? [{ value: 'air', Icon: Plane, label: t.calc_air, color: '#2563EB' }]
       : [
-        { value: 'air', Icon: Plane, label: 'جوي', color: '#2563EB' },
-        { value: 'sea', Icon: Ship, label: 'بحري', color: '#0891B2' },
+        { value: 'air', Icon: Plane, label: t.calc_air, color: '#2563EB' },
+        { value: 'sea', Icon: Ship, label: t.calc_sea, color: '#0891B2' },
       ];
 
   const benefits = [
     {
       Icon: Timer,
-      title: 'تسعير فوري',
-      desc: 'احصل على تكلفة شحنتك في ثوانٍ معدودة دون انتظار.',
+      title: t.calc_b1_title,
+      desc: t.calc_b1_desc,
       color: '#36C6F4'
     },
     {
       Icon: Globe,
-      title: 'تغطية عالمية',
-      desc: 'نشحن من تركيا ودبي إلى جميع المدن الليبية بكفاءة.',
+      title: t.calc_b2_title,
+      desc: t.calc_b2_desc,
       color: '#2563EB'
     },
     {
       Icon: ShieldCheck,
-      title: 'شفافية كاملة',
-      desc: 'لا توجد رسوم خفية، السعر الذي تراه هو السعر التقديري العادل.',
+      title: t.calc_b3_title,
+      desc: t.calc_b3_desc,
       color: '#16A34A'
     }
   ];
@@ -90,7 +90,7 @@ const Widgets = ({ fadeInUp, bgColor = '#eef6ff' }) => {
   return (
     <section
       id="tracking"
-      className="section-padding relative overflow-hidden rtl px-5"
+      className="section-padding relative overflow-hidden px-5"
       style={{ backgroundColor: bgColor }}
     >
       {/* Decorative background elements */}
@@ -104,21 +104,21 @@ const Widgets = ({ fadeInUp, bgColor = '#eef6ff' }) => {
           
           {/* Info Column */}
           <motion.div 
-            className="lg:col-span-6 xl:col-span-7 text-right"
+            className={`lg:col-span-6 xl:col-span-7 ${lang === 'ar' ? 'text-right' : 'text-left'}`}
             {...fadeInUp}
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan/10 border border-cyan/20 text-cyan mb-6">
               <Calculator size={16} strokeWidth={2.5} />
-              <span className="text-xs font-black uppercase tracking-wider">حاسبة الأسعار الذكية</span>
+              <span className="text-xs font-black uppercase tracking-wider">{t.calc_badge}</span>
             </div>
             
-            <h2 className="text-4xl md:text-5xl font-black text-navy mb-6 leading-tight">
-              خطط لشحنتك القادمة <br /> 
-              <span className="text-cyan">بكل شفافية ودقة</span>
+            <h2 className="text-4xl md:text-5xl font-black text-navy mb-6 leading-[1.7] md:leading-[1.6]">
+              {t.calc_title_1} <br /> 
+              <span className="text-cyan">{t.calc_title_2}</span>
             </h2>
             
             <p className="text-lg text-slate-500 mb-10 max-w-xl leading-relaxed">
-              نحن نؤمن بأن الثقة تبدأ من الوضوح. استخدم الحاسبة التقديرية لمعرفة تكاليف الشحن من تركيا ودبي مباشرة، لنساعدك في اتخاذ أفضل قرار لعملك.
+              {t.calc_desc}
             </p>
 
             <div className="grid sm:grid-cols-2 gap-6">
@@ -137,15 +137,15 @@ const Widgets = ({ fadeInUp, bgColor = '#eef6ff' }) => {
 
             <div className="mt-12 p-6 rounded-2xl bg-white/50 border border-white backdrop-blur-sm inline-flex items-center gap-4">
               <div className="text-sm">
-                <span className="block font-bold text-navy">انضم لـ +50 عميل</span>
-                <span className="text-slate-400">يثقون في خدماتنا يومياً</span>
+                <span className="block font-bold text-navy">{t.calc_clients}</span>
+                <span className="text-slate-400">{t.calc_clients_sub}</span>
               </div>
             </div>
           </motion.div>
 
           {/* Calculator Column */}
           <motion.div 
-            className="lg:col-span-6 xl:col-span-5 flex justify-center lg:justify-end"
+            className={`lg:col-span-6 xl:col-span-5 flex justify-center ${lang === 'ar' ? 'lg:justify-end' : 'lg:justify-start'}`}
             {...fadeInUp}
             transition={{ delay: 0.2 }}
           >
@@ -158,8 +158,8 @@ const Widgets = ({ fadeInUp, bgColor = '#eef6ff' }) => {
                     <Calculator color="#36C6F4" size={28} strokeWidth={2.5} />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-black text-navy">حساب التكلفة</h3>
-                    <p className="text-sm font-medium text-slate-400">أدخل تفاصيل شحنتك للبدء</p>
+                    <h3 className="text-2xl font-black text-navy">{t.calc_card_title}</h3>
+                    <p className="text-sm font-medium text-slate-400">{t.calc_card_sub}</p>
                   </div>
                 </div>
               </div>
@@ -168,7 +168,7 @@ const Widgets = ({ fadeInUp, bgColor = '#eef6ff' }) => {
                 {/* Destination */}
                 <div className="mb-6">
                   <div className={fieldLabelClass}>
-                    <MapPin color="#36C6F4" size={16} strokeWidth={2.4} /> الوجهة
+                    <MapPin color="#36C6F4" size={16} strokeWidth={2.4} /> {t.calc_dest}
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     {destinations.map((item) => (
@@ -187,6 +187,7 @@ const Widgets = ({ fadeInUp, bgColor = '#eef6ff' }) => {
                       >
                         <span className="text-2xl">{item.flag}</span>
                         <span className="text-sm font-black">{item.label}</span>
+                        <span className="text-[10px] text-slate-400">{item.hint}</span>
                       </button>
                     ))}
                   </div>
@@ -195,7 +196,7 @@ const Widgets = ({ fadeInUp, bgColor = '#eef6ff' }) => {
                 {/* Shipping Type */}
                 <div className="mb-6">
                   <div className={fieldLabelClass}>
-                    <Truck color="#2563EB" size={16} strokeWidth={2.4} /> نوع الشحن
+                    <Truck color="#2563EB" size={16} strokeWidth={2.4} /> {t.calc_type}
                   </div>
                   <div className="grid grid-cols-2 gap-2 p-1.5 bg-slate-50 rounded-2xl border border-slate-100">
                     {shippingOptions.map(({ value, Icon, label, color }) => (
@@ -216,27 +217,27 @@ const Widgets = ({ fadeInUp, bgColor = '#eef6ff' }) => {
                 {/* Weight */}
                 <div className="mb-6">
                   <div className={fieldLabelClass}>
-                    <Scale color="#16A34A" size={16} strokeWidth={2.4} /> الوزن (كجم)
+                    <Scale color="#16A34A" size={16} strokeWidth={2.4} /> {t.calc_weight}
                   </div>
                   <input
                     type="number"
                     value={kg}
                     onChange={(e) => setKg(e.target.value)}
                     placeholder="0.00"
-                    className="w-full rounded-2xl border border-slate-100 bg-slate-50 px-5 py-4 text-lg font-bold text-navy outline-none focus:border-cyan focus:bg-white focus:ring-4 focus:ring-cyan/10 transition-all"
+                    className={`w-full rounded-2xl border border-slate-100 bg-slate-50 px-5 py-4 text-lg font-bold text-navy outline-none focus:border-cyan focus:bg-white focus:ring-4 focus:ring-cyan/10 transition-all ${lang === 'ar' ? 'text-right' : 'text-left'}`}
                   />
                 </div>
 
                 {showDims && (
                   <div className="mb-6 animate-in fade-in slide-in-from-top-2">
                     <div className={fieldLabelClass}>
-                      <Ruler color="#D97706" size={16} strokeWidth={2.4} /> الأبعاد (سم)
+                      <Ruler color="#D97706" size={16} strokeWidth={2.4} /> {t.calc_dims}
                     </div>
                     <div className="grid grid-cols-3 gap-3">
                       {[
-                        ['L', length, setLength, 'طول'],
-                        ['W', width, setWidth, 'عرض'],
-                        ['H', height, setHeight, 'ارتفاع']
+                        ['L', length, setLength, t.calc_length],
+                        ['W', width, setWidth, t.calc_width],
+                        ['H', height, setHeight, t.calc_height]
                       ].map(([id, val, set, lbl]) => (
                         <div key={id} className="relative">
                           <input
@@ -255,7 +256,7 @@ const Widgets = ({ fadeInUp, bgColor = '#eef6ff' }) => {
                   className="w-full flex items-center justify-center gap-3 rounded-2xl bg-[#0B3C6D] px-5 py-5 text-lg font-black text-white shadow-xl shadow-navy/20 hover:bg-navy/90 hover:-translate-y-1 transition-all duration-300 active:translate-y-0"
                 >
                   <Calculator size={20} />
-                  احسب التكلفة الآن
+                  {t.calc_btn}
                 </button>
 
                 <AnimatePresence>
@@ -269,9 +270,9 @@ const Widgets = ({ fadeInUp, bgColor = '#eef6ff' }) => {
                         <CheckCircle2 size={32} />
                       </div>
                       <div>
-                        <div className="text-[10px] font-black text-cyan uppercase tracking-widest mb-1">التكلفة التقديرية</div>
+                        <div className="text-[10px] font-black text-cyan uppercase tracking-widest mb-1">{t.calc_result_label}</div>
                         <div className="text-3xl font-black text-navy">
-                          {cost} <span className="text-sm font-bold text-slate-400">{shippingtype === 'air' ? '$' : 'دينار ليبي'}</span>
+                          {cost} <span className="text-sm font-bold text-slate-400">{shippingtype === 'air' ? '$' : t.calc_currency_lyd}</span>
                         </div>
                       </div>
                     </motion.div>

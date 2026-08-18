@@ -17,13 +17,13 @@ import './App.css';
   Every section gets its own light background so adjacent sections
   look visually distinct while staying consistent with the brand.
 
-  Hero        → white
-  Widgets     → pale sky blue
-  Services    → white
-  Stats       → soft mint / green-tinted white
-  HowItWorks  → barely-blue white
-  Trust       → warm cream
-  Footer      → cool light grey
+  Hero        -> white
+  Widgets     -> pale sky blue
+  Services    -> white
+  Stats       -> soft mint / green-tinted white
+  HowItWorks  -> barely-blue white
+  Trust       -> warm cream
+  Footer      -> cool light grey
 */
 const C = {
   hero: '#ffffff',
@@ -79,7 +79,7 @@ const App = () => {
         {/* ① Hero ──────────────────────────────── white */}
         <Hero />
 
-        {/* Hero → Widgets  (transparent over sea → pale-sky-blue) */}
+        {/* Hero -> Widgets  (transparent over sea -> pale-sky-blue) */}
         <div className="relative z-10 -mt-24 md:-mt-32 pointer-events-none">
           <SectionConnector
             variant={0}
@@ -92,7 +92,7 @@ const App = () => {
         {/* ② Widgets ───────────────────────────── pale sky blue */}
         <Widgets fadeInUp={fadeInUp} bgColor={C.widgets} />
 
-        {/* Widgets → Services  (pale-sky → white) */}
+        {/* Widgets -> Services  (pale-sky -> white) */}
         <SectionConnector
           variant={1}
           from={C.widgets} to={C.services}
@@ -104,7 +104,7 @@ const App = () => {
         <Services fadeInUp={fadeInUp} bgColor={C.services} />
 
 
-        {/* Services → HowItWorks  (white → barely blue) */}
+        {/* Services -> HowItWorks  (white -> barely blue) */}
         <SectionConnector
           variant={3}
           from={C.services} to={C.howItWorks}
@@ -115,7 +115,7 @@ const App = () => {
         {/* ⑤ HowItWorks ────────────────────────── barely blue */}
         <HowItWorks fadeInUp={fadeInUp} bgColor={C.howItWorks} />
 
-        {/* HowItWorks → Trust  (barely-blue → white) */}
+        {/* HowItWorks -> Trust  (barely-blue -> white) */}
         <SectionConnector
           variant={4}
           from={C.howItWorks} to={C.trust}
@@ -126,7 +126,7 @@ const App = () => {
         {/* ⑥ TrustSection ──────────────────────── white */}
         <TrustSection fadeInUp={fadeInUp} bgColor={C.trust} />
 
-        {/* Trust → Footer  (white → cool light grey) */}
+        {/* Trust -> Footer  (white -> cool light grey) */}
         <SectionConnector
           variant={5}
           from={C.trust} to={C.footer}

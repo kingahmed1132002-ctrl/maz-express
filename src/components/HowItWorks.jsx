@@ -1,9 +1,11 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
+import { useLang } from '../LanguageContext';
 
 const HowItWorks = ({ bgColor = '#f8fbff' }) => {
   const containerRef = useRef(null);
   const [hoveredBranch, setHoveredBranch] = useState(null);
+  const { t, lang } = useLang();
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -21,7 +23,6 @@ const HowItWorks = ({ bgColor = '#f8fbff' }) => {
       ref={containerRef}
       id="how-it-works"
       className="py-20 relative overflow-hidden"
-      dir="rtl"
       style={{ backgroundColor: bgColor }}
     >
       {/* Decorative Background Elements */}
@@ -33,12 +34,12 @@ const HowItWorks = ({ bgColor = '#f8fbff' }) => {
       <div className="container mx-auto px-5 relative z-10">
         <div className="text-center mb-16">
           <motion.h2
-            className="text-4xl md:text-6xl font-black text-navy mb-8 leading-tight"
+            className="text-4xl md:text-6xl font-black text-navy mb-8 leading-[1.6]"
           >
-            كيف يعمل <span className="animate-text-shimmer">ماز إكسبرس؟</span>
+            {t.how_title_1} <span className="animate-text-shimmer">{t.how_title_2}</span>
           </motion.h2>
           <p className="text-text-secondary max-w-2xl mx-auto text-lg md:text-xl font-medium">
-            رحلة تسوق عالمية تبدأ بضغطة زر وتنتهي بابتسامة عند باب بيتك.
+            {t.how_desc}
           </p>
         </div>
 
@@ -53,15 +54,15 @@ const HowItWorks = ({ bgColor = '#f8fbff' }) => {
 
           <Step
             number="01"
-            title="فتح حساب"
-            description="أنشئ حسابك المجاني في ثوانٍ لتحصل على هويتك التسوقية وعناويننا الدولية في دبي وتركيا."
+            title={t.step1_title}
+            description={t.step1_desc}
             icon="👤"
           />
 
           <Step
             number="02"
-            title="اختيار المنتج"
-            description="تصفح متاجرك العالمية المفضلة واختر المنتجات التي ترغب in اقتنائها."
+            title={t.step2_title}
+            description={t.step2_desc}
             icon="📱"
           />
 
@@ -69,14 +70,14 @@ const HowItWorks = ({ bgColor = '#f8fbff' }) => {
           <div className="relative py-12 md:py-20">
             <div className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none">
               <svg width="100%" height="100%" viewBox="0 0 800 400" fill="none" preserveAspectRatio="none">
-                {/* Right Path - "تدفع بنفسك" */}
+                {/* Right Path - Option 1 */}
                 <path
                   d="M400 0 V40 Q400 80 480 80 H650 Q700 80 700 130 V180"
                   stroke={hoveredBranch === 'right' ? '#36C6F4' : '#d9eef5'}
                   strokeWidth="2" strokeDasharray="8 8"
                   className="transition-all duration-500"
                 />
-                {/* Left Path - "احنا ندفعلك" */}
+                {/* Left Path - Option 2 */}
                 <path
                   d="M400 0 V40 Q400 80 320 80 H150 Q100 80 100 130 V180"
                   stroke={hoveredBranch === 'left' ? '#36C6F4' : '#d9eef5'}
@@ -108,26 +109,28 @@ const HowItWorks = ({ bgColor = '#f8fbff' }) => {
               </svg>
             </div>
 
-            <div className="flex flex-col md:flex-row gap-12 md:gap-24 items-stretch relative">
+            <div className={`flex flex-col md:flex-row gap-12 md:gap-24 items-stretch relative ${lang === 'ar' ? 'flex-row' : 'flex-row-reverse'}`}>
               <div className="flex-1" onMouseEnter={() => setHoveredBranch('right')} onMouseLeave={() => setHoveredBranch(null)}>
                 <BranchCard
                   side="right"
-                  title="تدفع بنفسك"
-                  description="استفيد من خدمات شركة ماز من خلال شراء المنتجات واختيار موقع الاستلام في مخازننا بـدبي وتركيا كعناوين إستلام"
+                  title={t.branch_title_1}
+                  description={t.branch_desc_1}
                   icon="🛒"
-                  label="الخيار الأول"
+                  label={t.branch_label_1}
                   isHovered={hoveredBranch === 'right'}
+                  lang={lang}
                 />
               </div>
 
               <div className="flex-1" onMouseEnter={() => setHoveredBranch('left')} onMouseLeave={() => setHoveredBranch(null)}>
                 <BranchCard
                   side="left"
-                  title="نحن ندفعلك"
-                  description= "إذا كنت لا تملك بطاقة دفع دولية، فقط أرسل لنا روابط المنتجات وسنقوم نحن بعملية الشراء والدفع بدلاً منك بعد ايداع قيمتهن الى محفظة ماز."
+                  title={t.branch_title_2}
+                  description={t.branch_desc_2}
                   icon="💳"
-                  label="الخيار الثاني"
+                  label={t.branch_label_2}
                   isHovered={hoveredBranch === 'left'}
+                  lang={lang}
                 />
               </div>
             </div>
@@ -135,15 +138,15 @@ const HowItWorks = ({ bgColor = '#f8fbff' }) => {
 
           <Step
             number="03"
-            title="نستلم في مخازننا"
-            description="في كلتا الحالتين، نستلم مشترياتك في مخازننا العالمية، نقوم بفحصها وتجهيزها بأمان للشحن الدولي."
+            title={t.step3_title}
+            description={t.step3_desc}
             icon="📦"
           />
 
           <Step
             number="04"
-            title="يتم الشحن إلى ليبيا"
-            description="نشحن طردك بسرعة وأمان إلى ليبيا، مع توفير خدمة التوصيل لمختلف المدن."
+            title={t.step4_title}
+            description={t.step4_desc}
             icon="✈️"
           />
 
@@ -152,12 +155,12 @@ const HowItWorks = ({ bgColor = '#f8fbff' }) => {
             <div className="inline-block relative p-1 group">
               <div className="absolute inset-0 bg-cyan rounded-3xl blur opacity-15 group-hover:opacity-25 transition duration-1000"></div>
               <div className="relative bg-white border border-cyan/20 px-8 py-10 md:px-16 md:py-12 rounded-3xl shadow-xl">
-                <div className="text-5xl md:text-7xl font-black text-cyan mb-4 tracking-tighter">
-                  0% <span className="text-3xl md:text-5xl">عمولة</span>
+                <div className="text-5xl md:text-7xl font-black text-cyan mb-4 tracking-normal" style={{ direction: 'ltr' }}>
+                  0% <span className="ml-3 text-3xl md:text-5xl tracking-normal" style={{ direction: lang === 'ar' ? 'rtl' : 'ltr' }}>{t.commission_word}</span>
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-navy mb-4">خدماتنا بعمولة 0%</h3>
+                <h3 className="text-2xl md:text-3xl font-bold text-navy mb-4">{t.commission_title}</h3>
                 <p className="text-text-secondary text-lg max-w-md mx-auto">
-                  نحن نوفر لك هذه الخدمات بدون أي عمولة إضافية. سعر المنتج كما هو في المتجر تماماً.
+                  {t.commission_desc}
                 </p>
               </div>
             </div>
@@ -189,11 +192,14 @@ const Step = ({ number, title, description, icon }) => (
   </motion.div>
 );
 
-const BranchCard = ({ title, description, icon, side, label, isHovered }) => (
+const BranchCard = ({ title, description, icon, side, label, isHovered, lang }) => {
+  // Determine gradient accent placement based on language and visual side
+  const showRight = side === 'right' && lang === 'ar' || side === 'left' && lang === 'en';
+  return (
   <motion.div
     className={`h-full bg-white p-10 rounded-[2.5rem] border ${isHovered ? 'border-cyan/50 shadow-xl' : 'border-cyan/10 shadow-md'} relative overflow-hidden transition-all duration-500`}
   >
-    <div className={`absolute top-0 ${side === 'right' ? 'right-0' : 'left-0'} w-1.5 h-full bg-cyan opacity-70`}></div>
+    <div className={`absolute top-0 ${showRight ? 'right-0' : 'left-0'} w-1.5 h-full bg-cyan opacity-70`}></div>
     <div className={`text-xs font-bold uppercase mb-6 inline-block px-3 py-1 rounded-full transition-colors duration-300 ${isHovered ? 'bg-cyan text-navy' : 'bg-cyan/10 text-cyan-dark'}`}>
       {label}
     </div>
@@ -204,6 +210,6 @@ const BranchCard = ({ title, description, icon, side, label, isHovered }) => (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M12 5v14m7-7l-7 7-7-7" /></svg>
     </div>
   </motion.div>
-);
+)};
 
 export default HowItWorks;
