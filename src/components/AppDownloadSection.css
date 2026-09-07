@@ -1,0 +1,100 @@
+.maz-app-section { padding: 24px 0 32px; overflow: hidden; background: #d9f4fc; background-image: radial-gradient(ellipse at 18% 50%, #87def566 0%, transparent 65%); scroll-margin-top: 105px; }
+.maz-app-panel { position: relative; isolation: isolate; max-width: 1200px; margin: auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; color: #0b3c6d; }
+.maz-app-copy { position: relative; z-index: 2; padding: 64px 48px 54px; }
+.maz-app-eyebrow { display: inline-flex; align-items: center; gap: 9px; color: #076681; font-size: 13px; font-weight: 700; letter-spacing: .5px; border: 1px solid #119bc533; background: #ffffff80; padding: 7px 14px; border-radius: 100px; }
+.maz-app-copy h2 { color: #0b3c6d; font-size: clamp(36px, 4vw, 54px); line-height: 1.5; font-weight: 900; margin: 23px 0 17px; letter-spacing: -.8px; }
+.maz-app-copy h2 span { color: #087d9e; }
+.maz-app-description { font-size: 16px; line-height: 2; color: #365c71; max-width: 460px; }
+.maz-app-features { display: flex; flex-wrap: wrap; gap: 12px 20px; list-style: none; margin: 24px 0 30px; padding: 0; }
+.maz-app-features li { display: flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 600; color: #214e67; }
+.maz-app-features svg { color: #087d9e; flex-shrink: 0; }
+.maz-app-stores { display: flex; flex-wrap: wrap; gap: 12px; }
+.maz-store { display: flex; align-items: center; gap: 12px; min-height: 68px; border-radius: 13px; padding: 10px 17px; text-decoration: none; }
+.maz-store span { display: flex; flex-direction: column; }
+.maz-store small { font-size: 11px; line-height: 1.6; }
+.maz-store strong { font-family: 'Inter', sans-serif; font-size: 20px; line-height: 1.5; letter-spacing: -.5px; direction: ltr; }
+.maz-store-apple { background: #fff; color: #0a304e; transition: transform .2s, box-shadow .2s; }
+.maz-store-apple:hover { transform: translateY(-3px); box-shadow: 0 8px 25px #36c6f438; }
+.maz-store-apple > svg:last-child { margin-inline-start: 3px; }
+.maz-store-soon { color: #365c71; border: 1px solid #148aaa40; background: #ffffff45; }
+.maz-app-note { display: flex; align-items: center; gap: 6px; margin-top: 14px; color: #42667a; font-size: 11px; }
+.maz-app-note svg { color: #087e68; flex-shrink: 0; }
+.maz-app-qr { display: inline-flex; align-items: center; gap: 15px; margin-top: 28px; padding-top: 23px; border-top: 1px solid #148aaa30; color: #0b3c6d; text-decoration: none; }
+.maz-app-qr img { background: #fff; border-radius: 9px; padding: 4px; }
+.maz-app-qr span { display: flex; flex-direction: column; gap: 3px; }
+.maz-app-qr strong { font-size: 13px; }
+.maz-app-qr small { color: #42667a; font-size: 11px; }
+.maz-app-qr:focus-visible, .maz-store-apple:focus-visible { outline: 3px solid #087d9e; outline-offset: 6px; }
+.maz-app-visual { position: relative; align-self: stretch; min-height: 690px; display: flex; align-items: center; justify-content: center; direction: ltr; }
+.maz-app-phone { position: absolute; top: 50%; left: 50%; z-index: 1; width: 640px; max-width: none; height: auto; transform: translate(-50%, -50%) rotate(-9deg); filter: drop-shadow(0 28px 24px #17769933); pointer-events: none; }
+.maz-app-orbit { position: absolute; width: 560px; height: 560px; border: 1px solid #179cc52e; border-radius: 50%; background: #ffffff15; }
+.maz-app-orbit-inner { width: 410px; height: 410px; border-style: dashed; border-color: #179cc540; }
+.maz-app-float { position: absolute; z-index: 2; display: flex; align-items: center; gap: 10px; padding: 13px 16px; border-radius: 16px; background: #f7fcfff2; color: #0b3c6d; box-shadow: 0 16px 38px #001a3433; direction: inherit; }
+[dir="rtl"] .maz-app-float { direction: rtl; }
+.maz-app-float-tracking { top: 26%; left: 20px; transform: rotate(-4deg); animation: mazFloatTracking 3.2s ease-in-out infinite; will-change: transform; }
+.maz-app-float-world { bottom: 20%; right: 8px; transform: rotate(4deg); animation: mazFloatWorld 3.6s ease-in-out infinite 0.4s; will-change: transform; }
+@keyframes mazFloatTracking {
+  0%, 100% {
+    transform: rotate(-4deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(-2.8deg) translateY(-14px);
+  }
+}
+@keyframes mazFloatWorld {
+  0%, 100% {
+    transform: rotate(4deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(5.2deg) translateY(-14px);
+  }
+}
+.maz-app-float > span:not(.maz-app-float-icon):not(.maz-app-status) { display: flex; flex-direction: column; }
+.maz-app-float strong { font-size: 13px; font-weight: 800; }
+.maz-app-float small { font-size: 10px; color: #526e80; }
+.maz-app-float-icon { display: grid; place-items: center; width: 39px; height: 39px; border-radius: 12px; background: #e0f4fc; color: #078db7; }
+.maz-app-status { width: 7px; height: 7px; border-radius: 50%; background: #20ab82; margin-inline-start: 6px; }
+[dir="ltr"] .maz-app-copy h2 { line-height: 1.2; margin-bottom: 24px; }
+@media (min-width: 901px) { .maz-app-visual { max-height: 780px; } }
+@media (max-width: 1100px) and (min-width: 901px) { .maz-app-copy { padding: 44px 30px; } .maz-app-phone { width: 600px; } .maz-app-float-tracking { left: 0; } .maz-app-float-world { right: 0; } }
+@media (max-width: 900px) {
+  .maz-app-panel { grid-template-columns: 1fr; }
+  .maz-app-copy { padding: 42px 30px 0; text-align: center; }
+  .maz-app-description { margin-inline: auto; }
+  .maz-app-features, .maz-app-stores, .maz-app-note { justify-content: center; }
+  .maz-app-copy h2 { font-size: 44px; }
+  .maz-app-qr { display: none; }
+  .maz-app-visual { min-height: 620px; height: 620px; overflow: hidden; }
+  .maz-app-phone { width: 570px; }
+  .maz-app-float-tracking { left: calc(50% - 235px); }
+  .maz-app-float-world { right: calc(50% - 235px); }
+}
+@media (max-width: 540px) {
+  .maz-app-section { padding: 12px 0 28px; }
+
+  .maz-app-copy { padding: 32px 20px 0; }
+  .maz-app-eyebrow { font-size: 11px; }
+  .maz-app-copy h2 { font-size: 35px; margin-top: 20px; }
+  .maz-app-description { font-size: 14px; line-height: 1.95; }
+  .maz-app-features { gap: 10px 14px; margin: 20px 0 24px; }
+  .maz-app-features li { font-size: 11px; }
+  .maz-app-features svg { width: 17px; }
+  .maz-app-stores { gap: 10px; flex-wrap: nowrap; }
+  .maz-store { gap: 8px; padding: 10px 12px; min-height: 62px; flex: 1; justify-content: center; }
+  .maz-store strong { font-size: 17px; }
+  .maz-store small { font-size: 10px; }
+  .maz-store > svg { width: 24px; flex-shrink: 0; }
+  .maz-store-apple > svg:last-child { display: none; }
+  .maz-app-note { font-size: 10px; }
+  .maz-app-visual { min-height: 500px; height: 500px; }
+  .maz-app-phone { width: 450px; }
+  .maz-app-orbit-outer { width: 410px; height: 410px; }
+  .maz-app-orbit-inner { width: 310px; height: 310px; }
+  .maz-app-float { gap: 8px; padding: 10px; border-radius: 12px; }
+  .maz-app-float-tracking { left: 12px; top: 23%; }
+  .maz-app-float-world { right: 10px; bottom: 17%; }
+  .maz-app-float strong { font-size: 11px; }
+  .maz-app-float small { font-size: 9px; }
+  .maz-app-float-icon { width: 32px; height: 32px; }
+}
+@media (prefers-reduced-motion: reduce) { .maz-store-apple { transition: none; } .maz-store-apple:hover { transform: none; } }

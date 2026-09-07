@@ -6,7 +6,7 @@ import Widgets from './components/Widgets';
 import Services from './components/Services';
 import Stats from './components/Stats';
 import HowItWorks from './components/HowItWorks';
-import TrustSection from './components/TrustSection';
+import AppDownloadSection from './components/AppDownloadSection';
 import Footer from './components/Footer';
 import SectionConnector from './components/SectionConnector';
 import Preloader from './components/Preloader';
@@ -31,7 +31,7 @@ const C = {
   services: '#ffffff',   // white
   stats: '#f0fdf4',   // soft mint
   howItWorks: '#f8fbff',   // barely blue
-  trust: '#ffffff',   // white
+  trust: '#d9f4fc',   // white
   footer: '#f1f5f9',   // cool light grey
 };
 
@@ -124,7 +124,7 @@ const App = () => {
         />
 
         {/* ⑥ TrustSection ──────────────────────── white */}
-        <TrustSection fadeInUp={fadeInUp} bgColor={C.trust} />
+        <AppDownloadSection />
 
         {/* Trust -> Footer  (white -> cool light grey) */}
         <SectionConnector

@@ -88,6 +88,7 @@ const Footer = ({ bgColor = '#f1f5f9' }) => {
                 { label: t.footer_link_services,         href: '#services' },
                 { label: t.footer_link_how,  href: '#how-it-works' },
                 { label: t.footer_link_track,       href: '#tracking' },
+                { label: lang === 'ar' ? 'تطبيق ماز' : 'Maz App', href: '#app' },
               ].map((link, i) => (
                 <li key={i}>
                   <a
