@@ -13,10 +13,9 @@
 .maz-store span { display: flex; flex-direction: column; }
 .maz-store small { font-size: 11px; line-height: 1.6; }
 .maz-store strong { font-family: 'Inter', sans-serif; font-size: 20px; line-height: 1.5; letter-spacing: -.5px; direction: ltr; }
-.maz-store-apple { background: #fff; color: #0a304e; transition: transform .2s, box-shadow .2s; }
-.maz-store-apple:hover { transform: translateY(-3px); box-shadow: 0 8px 25px #36c6f438; }
-.maz-store-apple > svg:last-child { margin-inline-start: 3px; }
-.maz-store-soon { color: #365c71; border: 1px solid #148aaa40; background: #ffffff45; }
+.maz-store-download { background: #fff; color: #0a304e; transition: transform .2s, box-shadow .2s; }
+.maz-store-download:hover { transform: translateY(-3px); box-shadow: 0 8px 25px #36c6f438; }
+.maz-store-download > svg:last-child { margin-inline-start: 3px; }
 .maz-app-note { display: flex; align-items: center; gap: 6px; margin-top: 14px; color: #42667a; font-size: 11px; }
 .maz-app-note svg { color: #087e68; flex-shrink: 0; }
 .maz-app-qr { display: inline-flex; align-items: center; gap: 15px; margin-top: 28px; padding-top: 23px; border-top: 1px solid #148aaa30; color: #0b3c6d; text-decoration: none; }
@@ -24,7 +23,7 @@
 .maz-app-qr span { display: flex; flex-direction: column; gap: 3px; }
 .maz-app-qr strong { font-size: 13px; }
 .maz-app-qr small { color: #42667a; font-size: 11px; }
-.maz-app-qr:focus-visible, .maz-store-apple:focus-visible { outline: 3px solid #087d9e; outline-offset: 6px; }
+.maz-app-qr:focus-visible, .maz-store-download:focus-visible { outline: 3px solid #087d9e; outline-offset: 6px; }
 .maz-app-visual { position: relative; align-self: stretch; min-height: 690px; display: flex; align-items: center; justify-content: center; direction: ltr; }
 .maz-app-phone { position: absolute; top: 50%; left: 50%; z-index: 1; width: 640px; max-width: none; height: auto; transform: translate(-50%, -50%) rotate(-9deg); filter: drop-shadow(0 28px 24px #17769933); pointer-events: none; }
 .maz-app-orbit { position: absolute; width: 560px; height: 560px; border: 1px solid #179cc52e; border-radius: 50%; background: #ffffff15; }
@@ -84,7 +83,7 @@
   .maz-store strong { font-size: 17px; }
   .maz-store small { font-size: 10px; }
   .maz-store > svg { width: 24px; flex-shrink: 0; }
-  .maz-store-apple > svg:last-child { display: none; }
+  .maz-store-download > svg:last-child { display: none; }
   .maz-app-note { font-size: 10px; }
   .maz-app-visual { min-height: 500px; height: 500px; }
   .maz-app-phone { width: 450px; }
@@ -97,4 +96,4 @@
   .maz-app-float small { font-size: 9px; }
   .maz-app-float-icon { width: 32px; height: 32px; }
 }
-@media (prefers-reduced-motion: reduce) { .maz-store-apple { transition: none; } .maz-store-apple:hover { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .maz-store-download { transition: none; } .maz-store-download:hover { transform: none; } }

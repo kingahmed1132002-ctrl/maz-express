@@ -4,29 +4,30 @@ import { useLang } from '../LanguageContext';
 import './AppDownloadSection.css';
 
 const APP_STORE_URL = 'https://apps.apple.com/us/app/mazexpress/id6747578699';
+const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=com.mazexpress';
 
 const copy = {
   ar: {
     eyebrow: 'تطبيق ماز إكسبرس', title: 'شحناتك معاك.', accent: 'وين ما تمشي.',
     description: 'من أول طلب لحد باب بيتك، خلّي كل تفاصيل شحناتك بين يديك. حمّل تطبيق ماز وتابع شحنك بكل راحة، من مكان واحد.',
     features: ['شحن دولي ومحلي', 'متابعة شحناتك', 'محفظتك وفواتيرك'],
-    download: 'حمّله الآن من', soon: 'قريبًا على', scan: 'امسح الكود', scanHint: 'وحمّل التطبيق على iPhone',
-    note: 'متوفر على iPhone · نسخة Android قريبًا',
+    download: 'حمّله الآن من', scan: 'امسح الكود', scanHint: 'وحمّل التطبيق على iPhone',
+    note: 'متوفر الآن على iPhone وAndroid',
     tracking: 'كل خطوة، توصلك', trackingHint: 'تابع مستجدات شحنتك',
     together: 'من العالم لبابك', togetherHint: 'رحلة شحنك في تطبيق',
     alt: 'واجهة تطبيق ماز إكسبرس للشحن الدولي والمحلي وإدارة المحفظة',
-    appleLabel: 'تحميل ماز إكسبرس من App Store', androidLabel: 'نسخة Android قريبًا على Google Play',
+    appleLabel: 'تحميل ماز إكسبرس من App Store', androidLabel: 'تحميل ماز إكسبرس من Google Play',
   },
   en: {
     eyebrow: 'THE MAZ EXPRESS APP', title: 'Your shipments.', accent: 'Always with you.',
     description: 'From your first order to your doorstep, keep every shipping detail at your fingertips. Download Maz and manage it all in one place.',
     features: ['Global & local shipping', 'Shipment tracking', 'Wallet & invoices'],
-    download: 'Download on the', soon: 'Coming soon to', scan: 'Scan to download', scanHint: 'Get the app on your iPhone',
-    note: 'Available on iPhone · Android coming soon',
+    download: 'Download on the', scan: 'Scan to download', scanHint: 'Get the app on your iPhone',
+    note: 'Now available on iPhone and Android',
     tracking: 'Every step, in sight', trackingHint: 'Keep up with your shipment',
     together: 'The world to your door', togetherHint: 'Your shipping journey, in one app',
     alt: 'Maz Express app showing international and local shipping and wallet management',
-    appleLabel: 'Download Maz Express on the App Store', androidLabel: 'Android coming soon to Google Play',
+    appleLabel: 'Download Maz Express on the App Store', androidLabel: 'Download Maz Express on Google Play',
   },
 };
 
@@ -57,12 +58,12 @@ export default function AppDownloadSection() {
             })}
           </ul>
           <div className="maz-app-stores">
-            <a className="maz-store maz-store-apple" href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label={text.appleLabel}>
+            <a className="maz-store maz-store-download" href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label={text.appleLabel}>
               <AppleIcon /><span><small>{text.download}</small><strong>App Store</strong></span><ArrowUpRight size={18} aria-hidden="true" />
             </a>
-            <div className="maz-store maz-store-soon" aria-label={text.androidLabel}>
-              <PlayIcon /><span><small>{text.soon}</small><strong>Google Play</strong></span>
-            </div>
+            <a className="maz-store maz-store-download" href={GOOGLE_PLAY_URL} target="_blank" rel="noopener noreferrer" aria-label={text.androidLabel}>
+              <PlayIcon /><span><small>{text.download}</small><strong>Google Play</strong></span><ArrowUpRight size={18} aria-hidden="true" />
+            </a>
           </div>
           <p className="maz-app-note"><Check size={15} aria-hidden="true" />{text.note}</p>
           <a className="maz-app-qr" href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" aria-label={text.appleLabel}>
