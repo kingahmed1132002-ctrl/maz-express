@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
 import MazLogo from './MazLogo';
+import { useLang } from '../LanguageContext';
+
+const CLIENT_PORTAL_URL = 'https://mazexpress-admin.fly.dev';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { t, toggleLang } = useLang();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -14,9 +18,9 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { text: 'الخدمات', href: '#services' },
-    { text: 'المسارات', href: '#how-it-works' },
-    { text: 'التتبع', href: '#tracking' }
+    { text: t.nav_services, href: '#services' },
+    { text: t.nav_routes, href: '#how-it-works' },
+    { text: t.nav_tracking, href: '#tracking' }
   ];
 
   return (
@@ -35,11 +39,10 @@ const Navbar = () => {
             borderRadius: scrolled ? '50px' : '0px'
           }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className={`w-full flex items-center justify-between px-8 transition-all duration-500 ease-out ${
-            scrolled
+          className={`w-full flex items-center justify-between px-8 transition-all duration-500 ease-out ${scrolled
               ? 'bg-white/90 backdrop-blur-xl saturate-180 border border-cyan/20 shadow-2xl shadow-cyan/10'
               : 'bg-transparent border-transparent'
-          }`}
+            }`}
         >
 
           {/* Logo Section */}
@@ -65,9 +68,8 @@ const Navbar = () => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`relative no-underline text-base font-bold opacity-90 transition-all duration-300 ease-out hover:opacity-100 group ${
-                  scrolled ? 'text-navy hover:text-cyan' : 'text-navy/80 hover:text-cyan'
-                }`}
+                className={`relative no-underline text-base font-bold opacity-90 transition-all duration-300 ease-out hover:opacity-100 group ${scrolled ? 'text-navy hover:text-cyan' : 'text-navy/80 hover:text-cyan'
+                  }`}
               >
                 {item.text}
                 <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full bg-cyan`}></span>
@@ -81,16 +83,25 @@ const Navbar = () => {
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`md:hidden p-2 rounded-xl transition-colors duration-200 ${
-                scrolled ? 'bg-cyan/10 text-navy hover:bg-cyan/20' : 'bg-navy/5 text-navy hover:bg-navy/10'
-              }`}
+              className={`md:hidden p-2 rounded-xl transition-colors duration-200 ${scrolled ? 'bg-cyan/10 text-navy hover:bg-cyan/20' : 'bg-navy/5 text-navy hover:bg-navy/10'
+                }`}
             >
               {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </motion.button>
 
+            {/* Language Switch Button */}
+            <motion.button
+              onClick={toggleLang}
+              whileTap={{ scale: 0.95 }}
+              className={`hidden md:flex font-bold items-center justify-center w-12 h-12 rounded-xl transition-all duration-300 ${scrolled ? 'bg-cyan/10 text-navy hover:bg-cyan' : 'bg-navy/5 text-navy hover:bg-cyan/90 hover:text-white'
+                }`}
+            >
+              {t.nav_lang_switch}
+            </motion.button>
+
             {/* CTA Button */}
             <motion.a
-              href="https://maz-express-admin-dashboard.vercel.app/login"
+              href={CLIENT_PORTAL_URL}
               target="_blank"
               rel="noreferrer"
               initial={{ opacity: 0, scale: 0.8 }}
@@ -103,7 +114,7 @@ const Navbar = () => {
               whileTap={{ scale: 0.95 }}
               className="hidden md:flex bg-cyan text-navy px-8 py-4 rounded-xl text-base font-bold no-underline items-center gap-3 shadow-lg shadow-cyan/25 transition-all duration-300 hover:bg-cyan hover:shadow-xl hover:shadow-cyan/30"
             >
-              <span>بوابة العملاء</span>
+              <span>{t.nav_portal}</span>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="19" y1="12" x2="5" y2="12"></line>
                 <polyline points="12 19 5 12 12 5"></polyline>
@@ -135,13 +146,21 @@ const Navbar = () => {
             >
               <div className="p-8">
                 <div className="flex justify-between items-center mb-8">
-                  <span className="text-xl font-bold text-navy">القائمة</span>
-                  <button
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="p-2 rounded-lg text-navy hover:bg-cyan/10 transition-colors"
-                  >
-                    <X size={24} />
-                  </button>
+                  <span className="text-xl font-bold text-navy">{t.nav_menu}</span>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={toggleLang}
+                      className="p-2 rounded-lg font-bold text-cyan hover:bg-cyan/10 transition-colors"
+                    >
+                      {t.nav_lang_switch}
+                    </button>
+                    <button
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="p-2 rounded-lg text-navy hover:bg-cyan/10 transition-colors"
+                    >
+                      <X size={24} />
+                    </button>
+                  </div>
                 </div>
 
                 <div className="space-y-4">
@@ -161,7 +180,7 @@ const Navbar = () => {
                 </div>
 
                 <motion.a
-                  href="https://maz-express-admin-dashboard.vercel.app/login"
+                  href={CLIENT_PORTAL_URL}
                   target="_blank"
                   rel="noreferrer"
                   initial={{ opacity: 0, y: 20 }}
@@ -170,7 +189,7 @@ const Navbar = () => {
                   onClick={() => setMobileMenuOpen(false)}
                   className="mt-8 w-full bg-cyan text-navy py-4 px-6 rounded-xl font-bold text-center block shadow-lg shadow-cyan/25 hover:bg-cyan hover:shadow-xl hover:shadow-cyan/30 transition-all duration-300"
                 >
-                  بوابة العملاء
+                  {t.nav_portal}
                 </motion.a>
               </div>
             </motion.div>
